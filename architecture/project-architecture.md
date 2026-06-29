@@ -15,30 +15,30 @@ Two distinct senses of "tools" are involved:
 
 ```
    INPUTS (structured YAML — the analyst's work)
-   ┌─────────────────────────────────────────────┐
-   │ data/organization.yaml    FakeOrg profile     │
-   │ data/ai_inventory.yaml     AI use cases        │
-   │ data/assessments/*.yaml    control ratings     │  ← Met / Partial / Not Met / NA
+   ┌─────────────────────────────────────────────────
+   │ data/organization.yaml    FakeOrg profile       |
+   │ data/ai_inventory.yaml     AI use cases         │
+   │ data/assessments/*.yaml    control ratings      │  ← Met / Partial / Not Met / NA
    │ frameworks/*.yaml          NIST + EU AI Act maps│    + evidence references
-   └─────────────────────────────────────────────┘
+   └─────────────────────────────────────────────────┘
                         │
                         ▼
-        ┌──────────────────────────────────┐
+        ┌───────────────────────────────────┐
         │  airisk assess   (Python tool)    │
         │  • pydantic validates the data    │
         │  • scoring engine → maturity %    │
         │  • EU AI Act tier + obligations   │
         │  • Jinja2 renders the report      │
         │  • matplotlib draws the chart     │
-        └──────────────────────────────────┘
+        └───────────────────────────────────┘
                         │
                         ▼
    OUTPUTS (generated — the deliverable)
-   ┌─────────────────────────────────────────────┐
-   │ reports/scorecard.md        maturity by func │
+   ┌───────────────────────────────────────────────┐
+   │ reports/scorecard.md        maturity by func  │
    │ reports/final-report.md      full assessment  │
    │ reports/maturity-chart.png   visual           │
-   └─────────────────────────────────────────────┘
+   └───────────────────────────────────────────────┘
 ```
 
 Core principle: **the assessment content lives as data, and one command regenerates the whole report.** Change a control rating, re-run `airisk assess`, and the scorecard + report update. This reproducibility is itself a signal of rigor.
