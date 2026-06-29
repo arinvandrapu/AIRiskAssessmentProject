@@ -1,1 +1,1 @@
-# AIRiskAssessmentProject
+# AI Risk Assessment Project
