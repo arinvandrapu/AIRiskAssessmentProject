@@ -1,0 +1,61 @@
+# FakeOrg — fictional organization profile  (SYNTHETIC DATA)
+# Every detail below is invented for a portfolio AI governance risk assessment.
+# FakeOrg is not a real company.
+
+organization:
+  name: FakeOrg
+  industry: B2B SaaS — project & work-management platform
+  headquarters: Remote-first (EU + US presence)
+  size:
+    employees: 520
+    arr_usd_millions: 78
+  markets: [EU, UK, US]
+  business_units:
+    - Engineering
+    - Product
+    - Sales
+    - Marketing
+    - Customer Support
+    - People (HR)
+    - Finance & Operations
+    - Security & IT
+  ai_governance_posture:
+    maturity: emerging        # deliberately immature -> surfaces real gaps
+    summary: >
+      AI adoption has grown bottom-up across teams with no central policy,
+      no AI use-case register, and no formal risk process. This engagement
+      establishes the first inventory and a governance baseline.
+    notable_conditions:
+      - No board/executive-level AI governance ownership or committee.
+      - No approved AI acceptable-use policy (a draft exists).
+      - Shadow AI: teams adopt tools without security/privacy review.
+      - EU footprint means the EU AI Act applies to several use cases.
+
+assessment:
+  engagement: AI Governance Risk Assessment
+  assessor_role: GRC analyst (simulated)
+  period: Q2 2026
+  depth: Governance-level (control & process maturity; not a technical model audit)
+  ai_use_reviewed: both        # internal + customer-facing
+  in_scope:
+    - All AI/ML tools and use cases across business units (internal & customer-facing)
+    - Governance, policy, risk, data, vendor, and human-oversight controls
+    - EU AI Act risk classification of each use case
+  out_of_scope:
+    - Technical red-teaming / model security testing
+    - Sub-processors' internal AI systems
+    - Pure analytics/BI with no ML component
+  frameworks:
+    - NIST AI RMF 1.0 (maturity scoring)
+    - EU AI Act (risk classification + obligations)
+  stakeholders:
+    - { function: Risk & Compliance, title: Head of Compliance }
+    - { function: IT, title: Director of IT }
+    - { function: Security, title: CISO }
+    - { function: Business owners, title: "VP Sales, VP Engineering, CMO, Head of Talent, Director of Support, CFO" }
+  evidence_collected:
+    - Draft AI acceptable-use policy
+    - Vendor data sheets / DPAs
+    - Support chatbot standard operating procedure
+    - Partial vendor risk assessment
+    - Security & data-protection policy excerpts

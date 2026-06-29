@@ -1,0 +1,119 @@
+# FakeOrg AI use-case inventory  (SYNTHETIC DATA)
+# eu_ai_act_tier values are PROVISIONAL pending the framework research; they
+# are finalized in the Phase 3 assessment against frameworks/eu_ai_act.yaml.
+
+use_cases:
+  - id: UC-01
+    name: AI resume screening
+    business_unit: People (HR)
+    owner: Head of Talent
+    vendor_model: "TalentSift AI (third-party SaaS — ML ranking + LLM parsing)"
+    purpose: Screen and rank inbound job applicants to produce a recruiter shortlist.
+    deployment_status: production
+    customer_facing: false
+    data_used:
+      - Candidate CVs / resumes (personal data)
+      - Application-form responses
+      - Screening assessment scores
+    personal_data: true
+    special_category_data: false
+    human_review: partial        # recruiters review the shortlist but lean on the ranking
+    eu_ai_act_tier: high-risk     # Annex III — employment / worker management
+    notes: >
+      No documented bias/fairness testing; applicants are not informed AI is used;
+      no human-oversight SOP defining how recruiters must use or override scores.
+
+  - id: UC-02
+    name: Customer support chatbot
+    business_unit: Customer Support
+    owner: Director of Support
+    vendor_model: "Helpdesk platform + third-party LLM"
+    purpose: Answer customer questions and deflect tickets in-app and on the website.
+    deployment_status: production
+    customer_facing: true
+    data_used:
+      - Customer queries
+      - Account / subscription data (personal data)
+      - Knowledge-base content
+    personal_data: true
+    special_category_data: false
+    human_review: escalation      # escalates to human agents
+    eu_ai_act_tier: limited-risk  # Article 50 transparency — must disclose AI
+    notes: >
+      AI disclosure is shown inconsistently; conversation logs retained with no
+      retention policy; no evaluation for harmful or incorrect responses.
+
+  - id: UC-03
+    name: Sales copilot
+    business_unit: Sales
+    owner: VP Sales
+    vendor_model: "CRM-integrated GenAI assistant"
+    purpose: Draft outreach emails, summarize calls, and suggest next steps.
+    deployment_status: production
+    customer_facing: false
+    data_used:
+      - Prospect & customer contact data (personal data)
+      - Call transcripts
+      - CRM records
+    personal_data: true
+    special_category_data: false
+    human_review: full            # rep reviews before sending
+    eu_ai_act_tier: minimal-risk
+    notes: >
+      Adopted without security review (shadow IT); unclear whether customer data
+      is used by the vendor for training; no data-handling guidance issued.
+
+  - id: UC-04
+    name: Code assistant
+    business_unit: Engineering
+    owner: VP Engineering
+    vendor_model: "IDE code-completion assistant"
+    purpose: Inline code suggestions to improve developer productivity.
+    deployment_status: production
+    customer_facing: false
+    data_used:
+      - Proprietary source code
+    personal_data: false
+    special_category_data: false
+    human_review: full
+    eu_ai_act_tier: minimal-risk
+    notes: >
+      No policy on accepting suggestions, the license/IP provenance of generated
+      code, or excluding secrets from prompts.
+
+  - id: UC-05
+    name: Marketing content generation
+    business_unit: Marketing
+    owner: CMO
+    vendor_model: "Multiple GenAI content tools"
+    purpose: Draft blog posts, ad copy, and social content.
+    deployment_status: production
+    customer_facing: false        # outputs are public; tool use is internal
+    data_used:
+      - Brand & public marketing material
+    personal_data: false
+    special_category_data: false
+    human_review: full
+    eu_ai_act_tier: minimal-risk
+    notes: >
+      No review for accuracy / IP / plagiarism; AI-generated imagery not labeled;
+      several unmanaged tools in use across the team.
+
+  - id: UC-06
+    name: Internal demand-forecasting model
+    business_unit: Finance & Operations
+    owner: CFO / FP&A
+    vendor_model: "In-house ML model (Python)"
+    purpose: Forecast revenue, usage, and capacity for planning.
+    deployment_status: production
+    customer_facing: false
+    data_used:
+      - Internal financial data
+      - Product usage telemetry
+    personal_data: false
+    special_category_data: false
+    human_review: full
+    eu_ai_act_tier: minimal-risk
+    notes: >
+      No model documentation, validation records, or drift monitoring; single-owner
+      key-person risk; not recorded in any inventory before this assessment.
