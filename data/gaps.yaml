@@ -39,7 +39,7 @@ gaps:
     title: No human-oversight design for resume screening
     description: No SOP defining how recruiters must use, review, or override AI rankings.
     framework: EU AI Act
-    mapping: [Art 26(2), Art 14, MAP 3.5]
+    mapping: [Art 26(2), MAP 3.5]
     risk: Automation bias; the AI effectively makes hiring decisions unchecked.
     evidence: [vendor-talentsift-datasheet.md]
     severity: High
@@ -52,11 +52,14 @@ gaps:
     evidence: []
     severity: High
   - id: GAP-07
-    title: No Fundamental Rights Impact Assessment
-    description: No FRIA performed for the high-risk resume-screening use case.
-    framework: EU AI Act
-    mapping: [Art 27]
-    risk: Non-compliance with a mandatory pre-use obligation; unassessed rights impacts.
+    title: No DPIA or fundamental-rights review for the high-risk screening tool
+    description: >
+      No data-protection impact assessment (or voluntary FRIA-style review) for the resume-screening tool.
+    framework: GDPR / EU AI Act
+    mapping: [GDPR Art 35, MEASURE 2.10]
+    risk: >
+      A GDPR Art 35 DPIA is mandatory for systematic candidate profiling, and rights impacts are
+      unassessed. (Note: an EU AI Act Art 27 FRIA is NOT triggered for a private Annex III.4 deployer.)
     evidence: []
     severity: High
   - id: GAP-08
@@ -119,15 +122,15 @@ gaps:
     title: No chatbot output evaluation or log-retention policy
     description: No evaluation for harmful/incorrect responses; conversation logs kept with no policy.
     framework: NIST AI RMF
-    mapping: [MEASURE 2.4, MEASURE 3.3]
+    mapping: [MEASURE 2.4]
     risk: Harmful answers go undetected; privacy/retention exposure on stored chats.
     evidence: [support-chatbot-sop.md]
     severity: Low
   - id: GAP-16
-    title: No user appeal or feedback channel for AI outcomes
-    description: End users cannot report problems or appeal AI-driven outcomes.
-    framework: NIST AI RMF
-    mapping: [MEASURE 3.3]
-    risk: Errors persist; affected people have no recourse.
+    title: No user appeal, feedback, or explanation channel for AI outcomes
+    description: End users cannot report problems, appeal AI-driven outcomes, or obtain an explanation.
+    framework: NIST AI RMF / EU AI Act
+    mapping: [MEASURE 3.3, Art 86]
+    risk: Errors persist; affected people have no recourse or right to explanation (EU AI Act Art 86).
     evidence: []
     severity: Low

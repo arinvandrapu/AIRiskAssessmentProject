@@ -18,7 +18,7 @@
 {{ findings.executive_summary }}
 {% endif %}
 
-**Overall NIST AI RMF maturity:** {{ score.overall.maturity_pct | pct }} across {{ score.overall.assessed }}/{{ score.overall.total }} assessed subcategories{% if gap_counts %}; **{{ gap_counts.total }} gaps identified** ({{ gap_counts.High }} High, {{ gap_counts.Medium }} Medium, {{ gap_counts.Low }} Low){% endif %}.
+**Overall NIST AI RMF maturity:** {{ score.overall.maturity_pct | pct }} over {{ score.overall.applicable }} applicable subcategories ({{ score.overall.assessed }} assessed; {{ score.overall.assessed - score.overall.applicable }} N/A excluded){% if gap_counts %}; **{{ gap_counts.total }} gaps identified** ({{ gap_counts.High }} High, {{ gap_counts.Medium }} Medium, {{ gap_counts.Low }} Low){% endif %}.
 
 {% if findings and findings.key_findings %}
 **Key findings**
@@ -59,7 +59,7 @@
 
 ## 4. NIST AI RMF maturity findings
 
-**Overall:** {{ score.overall.maturity_pct | pct }} ({{ score.overall.assessed }}/{{ score.overall.total }} assessed)
+**Overall:** {{ score.overall.maturity_pct | pct }} over {{ score.overall.applicable }} applicable subcategories ({{ score.overall.assessed }} assessed, {{ score.overall.assessed - score.overall.applicable }} N/A)
 
 {% if chart_filename %}
 ![Maturity by function]({{ chart_filename }})

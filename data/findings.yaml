@@ -7,7 +7,7 @@ executive_summary: >
   the MEASURE function, where there is essentially no testing, monitoring, or bias evaluation.
   The most urgent exposure is the AI resume-screening tool: it is high-risk under the EU AI Act
   (Annex III employment) yet operates with no bias testing, no human-oversight procedure, no
-  candidate notification, and no Fundamental Rights Impact Assessment. The good news is that
+  candidate notification, and no data-protection impact assessment (DPIA). The good news is that
   FakeOrg's existing security and privacy programs provide partial coverage to build on, and the
   improvement roadmap below sequences the highest-severity fixes first.
 
@@ -15,6 +15,6 @@ key_findings:
   - No executive ownership or committee for AI risk; governance is ad hoc.
   - The AI acceptable-use policy is an unapproved draft with no high-risk provisions.
   - The high-risk resume-screening tool lacks bias testing, human oversight, and candidate notice.
-  - No Fundamental Rights Impact Assessment exists for the high-risk use case (EU AI Act Art 27).
+  - No GDPR Art 35 DPIA for the high-risk screening tool (mandatory for systematic candidate profiling).
   - MEASURE is the weakest function — no AI testing, monitoring, or metrics across the board.
   - Existing vendor-security and GDPR programs give a foundation to extend to AI-specific risk.

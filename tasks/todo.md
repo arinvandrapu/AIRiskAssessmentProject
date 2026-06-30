@@ -50,14 +50,13 @@
 - [x] Regenerated `reports/` with real scores + meaningful chart
 - [ ] Open Phase 3 PR; signal when complete + ready to merge
 
-### Phase 4 — Showcase polish & report review (branch `feat/phase4`) — PLAN AWAITING APPROVAL
+### Phase 4 — Showcase polish & report review (branch `feat/phase4`) — BUILT, IN REVIEW
 Scope per user: finish the steps + review the reports; NOT making public / linking profile.
-See vault `phase4-plan.md`.
-- [ ] Polished portfolio README (framing, results snapshot, embedded chart, quickstart, structure)
-- [ ] Review reports for consistency (gaps↔controls↔roadmap), accuracy (NIST/EU refs), polish
-- [ ] Independent subagent review of the report; fix findings
-- [ ] Add LICENSE (MIT)
-- [ ] Final verification (validate + assess + pytest + ruff); regenerate reports
+- [x] Polished portfolio README (framing, results snapshot, embedded chart, quickstart, structure)
+- [x] Consistency checks (gaps↔controls↔roadmap, tiers) — pass
+- [x] Independent subagent review; **fixed a critical EU-law error (FRIA Art 27) + 6 more**
+- [x] Add LICENSE (MIT)
+- [x] Final verification (validate + assess + pytest + ruff); regenerated reports
 - [ ] Open Phase 4 PR; signal when complete + ready to merge
 
 ---

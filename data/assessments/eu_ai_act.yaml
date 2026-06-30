@@ -9,7 +9,7 @@ use_cases:
     name: AI resume screening
     tier: high-risk
     role: deployer
-    rationale: Annex III.4 (employment/recruitment); performs profiling, so always high-risk (Art 6(4)).
+    rationale: Annex III.4 (employment/recruitment); performs profiling, so always high-risk (Art 6(3), final subparagraph).
     obligations:
       - ref: Art 26(1)
         requirement: Use in accordance with the provider's instructions for use
@@ -31,10 +31,14 @@ use_cases:
         requirement: Inform affected persons subject to Annex III decisions
         status: Not Met
         note: Candidates are not told AI screening is used.
-      - ref: Art 27
-        requirement: Fundamental Rights Impact Assessment (FRIA)
-        status: Not Met
-        note: No FRIA performed for the high-risk use case.
+      - ref: Art 27 (FRIA)
+        requirement: Fundamental Rights Impact Assessment — applicability
+        status: Not Applicable
+        note: >
+          Not triggered: Art 27 binds public bodies, public-service providers, and Annex III
+          5(b)/(c) deployers; a private employer under Annex III.4 is out of scope. The binding
+          instrument here is a GDPR Art 35 DPIA (systematic candidate profiling); a voluntary
+          FRIA-style review is recommended good practice (see GAP-07).
       - ref: Art 86
         requirement: Provide affected persons a meaningful explanation
         status: Not Met
@@ -43,8 +47,11 @@ use_cases:
   - id: UC-02
     name: Customer support chatbot
     tier: limited-risk
-    role: deployer
-    rationale: Article 50(1) transparency — users must be told they interact with an AI.
+    role: provider
+    rationale: >
+      Article 50(1) transparency — users must be told they interact with an AI. FakeOrg assembles
+      the chatbot (helpdesk platform + third-party LLM) and exposes it under its own brand, so it
+      acts as the provider/operator on whom the Art 50(1) disclosure duty falls.
     obligations:
       - ref: Art 50(1)
         requirement: Disclose to users that they are interacting with an AI
