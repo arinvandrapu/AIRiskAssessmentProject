@@ -33,7 +33,7 @@
 - [x] pytest tests (schema, scoring math, NA handling, end-to-end render) — 9 passing + ruff clean
 - [x] `pyproject.toml` with `airisk` entry point; `pip install -e .` works
 - [x] Fixed a real data bug found by tests (unquoted YAML colon in organization.yaml)
-- [ ] Open Phase 2 PR; signal explicitly when complete + ready to merge
+- [x] Open Phase 2 PR; signal explicitly when complete + ready to merge
 
 ### Phase 3 — The assessment content (branch `feat/phase3`) — BUILT, IN REVIEW
 **Data:**
@@ -48,7 +48,7 @@
 - [x] Report templates: EU obligation tables + gap register + roadmap + real exec summary
 - [x] Tests for the new logic (11 passing); ruff clean
 - [x] Regenerated `reports/` with real scores + meaningful chart
-- [ ] Open Phase 3 PR; signal when complete + ready to merge
+- [x] Open Phase 3 PR; signal when complete + ready to merge
 
 ### Phase 4 — Showcase polish & report review (branch `feat/phase4`) — BUILT, IN REVIEW
 Scope per user: finish the steps + review the reports; NOT making public / linking profile.
@@ -57,8 +57,6 @@ Scope per user: finish the steps + review the reports; NOT making public / linki
 - [x] Independent subagent review; **fixed a critical EU-law error (FRIA Art 27) + 6 more**
 - [x] Add LICENSE (MIT)
 - [x] Final verification (validate + assess + pytest + ruff); regenerated reports
-- [ ] Open Phase 4 PR; signal when complete + ready to merge
+- [x] Open Phase 4 PR; signal when complete + ready to merge
 
 ---
-
-**Review:** _(filled in on completion)_
