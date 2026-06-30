@@ -1,4 +1,4 @@
-# AI Governance Risk Assessment — `airisk`
+# AI Governance Risk Assessment 
 
 A simulated **AI governance risk assessment** of a fictional company (**FakeOrg**), built as a
 portfolio project. It models a real GRC engagement end-to-end: inventory an organization's AI
