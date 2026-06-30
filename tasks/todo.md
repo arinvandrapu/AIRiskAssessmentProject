@@ -22,22 +22,17 @@
 - [x] Add synthetic evidence artifacts under `evidence/`
 - [x] Open + merge Phase 1 PR
 
-### Phase 2 — Scoring engine + report generator (branch `feat/phase2-engine`) — PLAN AWAITING APPROVAL
-Build the `airisk` Python CLI that ingests Phase 1 data and generates the report.
-End state: pipeline runs end-to-end, rendering a report skeleton (controls present, unrated);
-honest ratings come in Phase 3.
-
-Package layout: `src/airisk/{models,loaders,scoring,report,chart,cli}.py` + `templates/` + `tests/` + `pyproject.toml`.
-
-- [ ] `models.py` — pydantic v2 schemas (organization, inventory, framework catalog, assessment ratings, gaps)
-- [ ] `loaders.py` — load + schema-validate YAML from `data/` and `frameworks/`
-- [ ] `scoring.py` — Met(1.0)/Partial(0.5)/Not Met(0)/NA(excluded) → maturity % rolled up subcategory → category → function; EU AI Act tier/obligation helpers
-- [ ] `report.py` + `templates/` — Jinja2 render to `reports/scorecard.md` + `reports/final-report.md`
-- [ ] `chart.py` — matplotlib radar chart of maturity-by-function → `reports/maturity-chart.png`
-- [ ] `cli.py` — Typer commands: `airisk validate`, `airisk init-assessment`, `airisk assess`
-- [ ] `init-assessment` generates blank `data/assessments/nist_ai_rmf.yaml` (72 subcats, status null) for Phase 3
-- [ ] pytest tests (schema, scoring math, NA handling, end-to-end render) + ruff clean
-- [ ] `pyproject.toml` with `airisk` entry point; `pip install -e .` works
+### Phase 2 — Scoring engine + report generator (branch `feat/phase2-build`) — BUILT, IN REVIEW
+- [x] `models.py` — pydantic v2 schemas (organization, inventory, framework catalog, ratings)
+- [x] `loaders.py` — load + schema-validate YAML from `data/` and `frameworks/`
+- [x] `scoring.py` — Met(1.0)/Partial(0.5)/Not Met(0)/NA(excluded) → maturity % rolled up subcategory → category → function; EU AI Act helpers
+- [x] `report.py` + `templates/` — Jinja2 render to `reports/scorecard.md` + `reports/final-report.md`
+- [x] `chart.py` — matplotlib radar chart → `reports/maturity-chart.png`
+- [x] `cli.py` — Typer commands: `airisk validate`, `airisk init-assessment`, `airisk assess`
+- [x] `init-assessment` generates blank `data/assessments/nist_ai_rmf.yaml` (72 subcats, status null)
+- [x] pytest tests (schema, scoring math, NA handling, end-to-end render) — 9 passing + ruff clean
+- [x] `pyproject.toml` with `airisk` entry point; `pip install -e .` works
+- [x] Fixed a real data bug found by tests (unquoted YAML colon in organization.yaml)
 - [ ] Open Phase 2 PR; signal explicitly when complete + ready to merge
 
 ### Phase 3 — The assessment content (own PR; plan + approve first)

@@ -1,0 +1,97 @@
+# AI Governance Risk Assessment — {{ org.name }}
+
+> **⚠️ Synthetic data.** {{ org.name }} is a fictional organization invented for a portfolio
+> project. All people, tools, evidence, and findings are made up. Nothing here is a real
+> assessment of a real company.
+
+{{ meta_line }}
+
+**Frameworks:** {{ frameworks_str }}
+
+---
+
+## 1. Executive summary
+
+{{ org.name }} is a {% if org.industry %}{{ org.industry }} {% endif %}organization{% if org.size %} (~{{ org.size.employees }} employees){% endif %} with an AI governance posture rated **{{ org.ai_governance_posture.maturity if org.ai_governance_posture else "unknown" }}**.
+
+Overall NIST AI RMF maturity is **{{ score.overall.maturity_pct | pct }}** across {{ score.overall.assessed }}/{{ score.overall.total }} assessed subcategories.
+
+{% if score.overall.assessed == 0 %}
+> _This is a report skeleton: control ratings have not been entered yet (Phase 3). The
+> structure, inventory, and EU AI Act classification below are final; maturity scores
+> populate once `data/assessments/nist_ai_rmf.yaml` is filled in._
+{% endif %}
+
+## 2. Scope & methodology
+
+- **AI use reviewed:** {{ assessment.ai_use_reviewed | default("n/a") }}
+- **In scope:**
+{% for item in assessment.in_scope %}
+  - {{ item }}
+{% endfor %}
+- **Out of scope:**
+{% for item in assessment.out_of_scope %}
+  - {{ item }}
+{% endfor %}
+{% if stakeholders_str %}
+- **Stakeholders consulted:** {{ stakeholders_str }}
+{% endif %}
+{% if evidence_str %}
+- **Evidence collected:** {{ evidence_str }}
+{% endif %}
+
+## 3. AI use-case inventory
+
+| ID | Use case | Business unit | Owner | EU AI Act tier | Human review |
+|---|---|---|---|---|---|
+{% for uc in inventory %}
+| {{ uc.id }} | {{ uc.name }} | {{ uc.business_unit | default("—") }} | {{ uc.owner | default("—") }} | {{ uc.eu_ai_act_tier | default("—") }} | {{ uc.human_review | default("—") }} |
+{% endfor %}
+
+## 4. NIST AI RMF maturity findings
+
+**Overall:** {{ score.overall.maturity_pct | pct }} ({{ score.overall.assessed }}/{{ score.overall.total }} assessed)
+
+{% if chart_filename %}
+![Maturity by function]({{ chart_filename }})
+{% endif %}
+
+| Function | Maturity | Assessed | Applicable |
+|---|---|---|---|
+{% for f in score.functions %}
+| {{ f.name }} | {{ f.summary.maturity_pct | pct }} | {{ f.summary.assessed }}/{{ f.summary.total }} | {{ f.summary.applicable }} |
+{% endfor %}
+
+See `scorecard.md` for the per-category breakdown.
+
+## 5. EU AI Act review
+
+Each AI use case is classified by EU AI Act risk tier:
+
+{% for row in eu_rows %}
+- **{{ row.tier }}** ({{ row.count }}): {{ row.names }}
+{% endfor %}
+
+{% if has_high_risk %}
+### High-risk obligations checklist
+
+The high-risk use case(s) above trigger the following obligations (compliance status assessed in Phase 3):
+
+**Provider obligations**
+{% for o in eu_obligations.provider %}
+- [ ] {{ o.article }} — {{ o.title }}
+{% endfor %}
+
+**Deployer obligations**
+{% for o in eu_obligations.deployer %}
+- [ ] {{ o.article }} — {{ o.title }}
+{% endfor %}
+{% endif %}
+
+## 6. Key gaps & risks
+
+_Populated in Phase 3 from the gap register._
+
+## 7. Governance improvement plan
+
+_Populated in Phase 3 from the improvement roadmap._
