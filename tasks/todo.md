@@ -50,10 +50,15 @@
 - [x] Regenerated `reports/` with real scores + meaningful chart
 - [ ] Open Phase 3 PR; signal when complete + ready to merge
 
-### Phase 4 — Showcase (own PR; plan + approve first)  [use vault `messaging-and-framing.md`]
-- [ ] Executive-summary final report
-- [ ] Polished public README: overview, skills/tools, synthetic-data disclaimer, screenshots
-- [ ] Final review pass; make repo public + link from profile README
+### Phase 4 — Showcase polish & report review (branch `feat/phase4`) — PLAN AWAITING APPROVAL
+Scope per user: finish the steps + review the reports; NOT making public / linking profile.
+See vault `phase4-plan.md`.
+- [ ] Polished portfolio README (framing, results snapshot, embedded chart, quickstart, structure)
+- [ ] Review reports for consistency (gaps↔controls↔roadmap), accuracy (NIST/EU refs), polish
+- [ ] Independent subagent review of the report; fix findings
+- [ ] Add LICENSE (MIT)
+- [ ] Final verification (validate + assess + pytest + ruff); regenerate reports
+- [ ] Open Phase 4 PR; signal when complete + ready to merge
 
 ---
 
