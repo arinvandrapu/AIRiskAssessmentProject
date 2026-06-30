@@ -12,6 +12,7 @@ Durable notes for the AI Risk Assessment Project. Conventions live in the worksp
 - [[architecture-decisions]] — ADR log of open/closed design decisions
 - [[architecture-overview]] — pointer + summary of `architecture/project-architecture.md` (how it works, deliverable, roadmap)
 - [[phase1-foundations]] — what Phase 1 built: NIST + EU AI Act framework catalogs, FakeOrg data, synthetic evidence
-- [[phase2-plan]] — plan for the `airisk` scoring engine + report generator (awaiting approval)
+- [[phase2-plan]] — plan for the `airisk` scoring engine + report generator
+- [[phase2-engine]] — the built `airisk` tool: schemas, scoring, report/chart, CLI, tests
 
 _Add a line here as notes are created._

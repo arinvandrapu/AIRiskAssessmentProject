@@ -28,7 +28,7 @@ organization:
     notable_conditions:
       - No board/executive-level AI governance ownership or committee.
       - No approved AI acceptable-use policy (a draft exists).
-      - Shadow AI: teams adopt tools without security/privacy review.
+      - "Shadow AI: teams adopt tools without security/privacy review."
       - EU footprint means the EU AI Act applies to several use cases.
 
 assessment:

@@ -1,0 +1,30 @@
+# AI Governance Maturity Scorecard — {{ org.name }}
+
+> **Synthetic data.** {{ org.name }} is a fictional organization; this scorecard is a portfolio artifact.
+
+**Framework:** NIST AI RMF 1.0 · **Overall maturity:** {{ score.overall.maturity_pct | pct }}
+**Coverage:** {{ score.overall.assessed }}/{{ score.overall.total }} subcategories assessed
+{% if chart_filename %}
+![Maturity by function]({{ chart_filename }})
+{% endif %}
+
+## Maturity by function
+
+| Function | Maturity | Assessed | Applicable |
+|---|---|---|---|
+{% for f in score.functions %}
+| {{ f.name }} | {{ f.summary.maturity_pct | pct }} | {{ f.summary.assessed }}/{{ f.summary.total }} | {{ f.summary.applicable }} |
+{% endfor %}
+
+## Maturity by category
+
+{% for f in score.functions %}
+### {{ f.name }} — {{ f.summary.maturity_pct | pct }}
+
+| Category | Maturity | Assessed |
+|---|---|---|
+{% for c in f.categories %}
+| {{ c.id }} — {{ c.title | truncate(70, true) }} | {{ c.summary.maturity_pct | pct }} | {{ c.summary.assessed }}/{{ c.summary.total }} |
+{% endfor %}
+
+{% endfor %}
