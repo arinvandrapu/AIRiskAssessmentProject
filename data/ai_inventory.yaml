@@ -1,6 +1,9 @@
 # FakeOrg AI use-case inventory  (SYNTHETIC DATA)
-# eu_ai_act_tier values are PROVISIONAL pending the framework research; they
-# are finalized in the Phase 3 assessment against frameworks/eu_ai_act.yaml.
+# eu_ai_act_tier values are classified against frameworks/eu_ai_act.yaml:
+#  - UC-01 resume screening = HIGH-RISK (Annex III.4 employment; profiling override Art 6(4))
+#  - UC-02 support chatbot  = LIMITED (Art 50(1) transparency)
+#  - UC-03..06              = MINIMAL
+# Detailed obligation-by-obligation mapping is done in the Phase 3 assessment.
 
 use_cases:
   - id: UC-01

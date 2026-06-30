@@ -1,0 +1,140 @@
+# EU AI Act — Regulation (EU) 2024/1689 — classification + obligations reference
+# Used as the compliance lens: classify each AI use case into a risk tier, then map
+# the obligations that tier triggers. Per-use-case classification for FakeOrg lives in
+# data/assessments/eu_ai_act.yaml (Phase 3).
+#
+# Legally definitive source: the authenticated Official Journal text at EUR-Lex,
+# cited by article/annex number: https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng
+
+meta:
+  regulation: Regulation (EU) 2024/1689 (EU AI Act)
+  entry_into_force: 2024-08-01
+  sources:
+    - https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng
+    - https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai
+    - https://artificialintelligenceact.eu/
+  live_law_caveat: >
+    A "Digital Omnibus on AI" amendment package (COM(2025) 836, tabled 19 Nov 2025)
+    reached provisional trilogue agreement by mid-2026 but had NOT been adopted/published
+    in the Official Journal as of this assessment. The binding 2024/1689 dates below
+    therefore remain in force. The proposal would, if enacted, push Annex III high-risk
+    application to 2027-12-02 and Annex I to 2028-08-02. Treat those as proposed, not binding.
+
+# ----------------------------------------------------------------------------
+# Risk-tier classification — apply in order (decision tree)
+# ----------------------------------------------------------------------------
+classification_decision_tree:
+  - "1. Is it a prohibited practice (Art 5)? -> PROHIBITED."
+  - "2. Is it a safety component of an Annex I product requiring 3rd-party conformity, OR an Annex III use case? -> HIGH-RISK ..."
+  - "   ... unless the Art 6(3) filter applies (narrow procedural / improves human work / detects patterns w/o influencing / preparatory). OVERRIDE: profiling of natural persons is ALWAYS high-risk."
+  - "3. Does it trigger an Art 50 transparency duty (chatbot, synthetic content, emotion/biometric, deepfake, public-interest text)? -> LIMITED / TRANSPARENCY."
+  - "4. Otherwise -> MINIMAL."
+
+risk_tiers:
+
+  prohibited:                       # Article 5 — applicable since 2025-02-02
+    article: "Art 5"
+    applicable_from: 2025-02-02
+    practices:
+      - { ref: "5(1)(a)", name: "Subliminal / manipulative / deceptive techniques causing significant harm" }
+      - { ref: "5(1)(b)", name: "Exploitation of vulnerabilities (age, disability, socio-economic) causing significant harm" }
+      - { ref: "5(1)(c)", name: "Social scoring leading to detrimental/unjustified treatment" }
+      - { ref: "5(1)(d)", name: "Predictive policing based solely on profiling/personality" }
+      - { ref: "5(1)(e)", name: "Untargeted scraping of facial images to build facial-recognition databases" }
+      - { ref: "5(1)(f)", name: "Emotion inference in workplace and education (except medical/safety)" }
+      - { ref: "5(1)(g)", name: "Biometric categorisation deducing sensitive attributes" }
+      - { ref: "5(1)(h)", name: "Real-time remote biometric identification in public spaces for law enforcement (narrow exceptions)" }
+
+  high_risk:
+    applicable_from:
+      annex_iii: 2026-08-02         # specific use cases
+      annex_i: 2027-08-02           # AI as safety component of regulated products
+    route_annex_i:
+      article: "Art 6(1)"
+      rule: "AI is a safety component of (or is) an Annex I product that requires third-party conformity assessment."
+    route_annex_iii:
+      article: "Art 6(2)"
+      art_6_3_filter: >
+        Not high-risk if it does not pose a significant risk of harm and does not materially
+        influence decisions — i.e. narrow procedural task, improves prior human activity,
+        detects patterns without replacing human assessment, or is preparatory. OVERRIDE:
+        profiling of natural persons is ALWAYS high-risk. (Art 6(4): document the exemption
+        before market + still register per Art 49(2).)
+      categories:
+        - { key: "III.1", area: "Biometrics", scope: "Remote biometric ID (excl. verification); biometric categorisation by protected attributes; emotion recognition" }
+        - { key: "III.2", area: "Critical infrastructure", scope: "Safety components for digital infra, road traffic, water/gas/heating/electricity" }
+        - { key: "III.3", area: "Education & vocational training", scope: "Admission, evaluation of outcomes, steering learning, exam monitoring" }
+        - { key: "III.4", area: "Employment & worker management", scope: "Recruitment/selection, filtering applications, candidate evaluation; promotion/termination, task allocation, performance monitoring" }
+        - { key: "III.5", area: "Essential private & public services", scope: "(a) public-benefit eligibility incl. healthcare; (b) creditworthiness / credit scoring (excl. fraud detection); (c) life & health insurance risk/pricing; (d) emergency-call triage/dispatch" }
+        - { key: "III.6", area: "Law enforcement", scope: "Victimisation risk, polygraphs, evidence reliability, re-offending risk, profiling in investigations" }
+        - { key: "III.7", area: "Migration, asylum & border control", scope: "Polygraphs, risk assessment, application examination, person detection (excl. travel-doc verification)" }
+        - { key: "III.8", area: "Justice & democratic processes", scope: "Assisting judicial fact/law interpretation; influencing elections/voting (excl. back-office logistics)" }
+
+  limited_transparency:             # Article 50 — applicable from 2026-08-02
+    article: "Art 50"
+    applicable_from: 2026-08-02
+    obligations:
+      - { ref: "50(1)", bearer: provider, duty: "Disclose to persons they are interacting with an AI (chatbots) unless obvious" }
+      - { ref: "50(2)", bearer: provider, duty: "Mark synthetic audio/image/video/text as AI-generated (machine-readable)" }
+      - { ref: "50(3)", bearer: deployer, duty: "Notify persons exposed to emotion-recognition / biometric categorisation" }
+      - { ref: "50(4)", bearer: deployer, duty: "Label deepfakes; disclose AI-generated text on matters of public interest (unless human editorial review)" }
+
+  minimal:
+    description: "Everything not captured above (e.g. spam filters, inventory optimisation, AI in games). No mandatory obligations; voluntary codes encouraged (Art 95)."
+
+# ----------------------------------------------------------------------------
+# Obligations catalog (high-risk) — for gap mapping in Phase 3
+# ----------------------------------------------------------------------------
+obligations:
+  provider_high_risk:
+    - { id: art_9_risk_management, article: "Art 9", title: "Continuous lifecycle risk-management system (intended use + foreseeable misuse)" }
+    - { id: art_10_data_governance, article: "Art 10", title: "Representative, bias-examined training/validation/test data; bias mitigation" }
+    - { id: art_11_technical_documentation, article: "Art 11 / Annex IV", title: "Technical documentation, kept current (simplified for SMEs)" }
+    - { id: art_12_record_keeping, article: "Art 12", title: "Automatic event logging over the lifetime for traceability" }
+    - { id: art_13_transparency_instructions, article: "Art 13", title: "Transparency + complete instructions for use to deployers" }
+    - { id: art_14_human_oversight, article: "Art 14", title: "Human oversight by design (override, stop, counter automation bias)" }
+    - { id: art_15_accuracy_robustness_security, article: "Art 15", title: "Accuracy, robustness, cybersecurity (poisoning/adversarial defenses)" }
+    - { id: art_17_quality_management, article: "Art 17", title: "Quality management system" }
+    - { id: art_43_conformity_assessment, article: "Art 43", title: "Conformity assessment (internal Annex VI / notified body Annex VII)" }
+    - { id: art_47_48_doc_ce, article: "Art 47-48", title: "EU declaration of conformity + CE marking" }
+    - { id: art_49_registration, article: "Art 49", title: "Registration in the EU database before market" }
+    - { id: art_72_post_market_monitoring, article: "Art 72", title: "Post-market monitoring plan" }
+    - { id: art_73_incident_reporting, article: "Art 73", title: "Serious-incident reporting (<=15 days; 10 if death; 2 if widespread)" }
+  deployer_high_risk:
+    - { id: art_26_1_use_per_instructions, article: "Art 26(1)", title: "Use in accordance with instructions for use" }
+    - { id: art_26_2_human_oversight, article: "Art 26(2)", title: "Assign competent, trained human oversight" }
+    - { id: art_26_5_monitor_report, article: "Art 26(5)", title: "Monitor operation; suspend + report serious incidents" }
+    - { id: art_26_6_logs, article: "Art 26(6)", title: "Keep logs >= 6 months (where under deployer control)" }
+    - { id: art_26_7_inform_workers, article: "Art 26(7)", title: "Inform workers/representatives before workplace deployment" }
+    - { id: art_26_11_inform_affected, article: "Art 26(11)", title: "Inform affected persons subject to Annex III decisions" }
+    - { id: art_27_fria, article: "Art 27", title: "Fundamental Rights Impact Assessment (public bodies, public-service providers, Annex III 5(b)/5(c))" }
+    - { id: art_86_right_to_explanation, article: "Art 86", title: "Provide affected persons a meaningful explanation of the AI system's role" }
+  notes:
+    deployer_becomes_provider: "Art 25 — putting your name on, substantially modifying, or repurposing a high-risk system to be high-risk makes the deployer a provider (full Art 16 duties)."
+    fria_triggers: ["public-law bodies", "private providers of public services", "Annex III 5(b) credit scoring", "Annex III 5(c) life/health insurance"]
+
+gpai:                               # Chapter V — applicable from 2025-08-02
+  applicable_from: 2025-08-02
+  all_providers:                    # Art 53
+    - { ref: "53(1)(a)", duty: "Technical documentation (Annex XI)" }
+    - { ref: "53(1)(b)", duty: "Documentation for downstream providers (Annex XII)" }
+    - { ref: "53(1)(c)", duty: "Copyright-compliance policy (honour TDM rights reservation)" }
+    - { ref: "53(1)(d)", duty: "Public summary of training content (AI Office template)" }
+  systemic_risk:                    # Arts 51, 52, 55 — presumption: >10^25 FLOP training compute
+    threshold: "Cumulative training compute > 10^25 FLOP (Art 51(2)), or Commission decision"
+    extra_obligations:
+      - { ref: "55(1)(a)", duty: "Model evaluation incl. adversarial testing / red-teaming" }
+      - { ref: "55(1)(b)", duty: "Assess + mitigate systemic risks at Union level" }
+      - { ref: "55(1)(c)", duty: "Track + report serious incidents to the AI Office" }
+      - { ref: "55(1)(d)", duty: "Ensure adequate cybersecurity for model + infrastructure" }
+
+# ----------------------------------------------------------------------------
+# Binding application timeline (Art 113 / Art 111)
+# ----------------------------------------------------------------------------
+timeline:
+  - { date: 2024-08-01, milestone: "Entry into force" }
+  - { date: 2025-02-02, milestone: "Prohibitions (Art 5) + AI literacy (Art 4)" }
+  - { date: 2025-08-02, milestone: "GPAI obligations (Ch V), governance, penalties" }
+  - { date: 2026-08-02, milestone: "General application: Annex III high-risk + Art 50 transparency" }
+  - { date: 2027-08-02, milestone: "Annex I high-risk (safety components); legacy GPAI deadline" }
+  - { date: 2030-08-02, milestone: "Legacy high-risk systems operated by public authorities" }
