@@ -14,5 +14,7 @@ Durable notes for the AI Risk Assessment Project. Conventions live in the worksp
 - [[phase1-foundations]] — what Phase 1 built: NIST + EU AI Act framework catalogs, FakeOrg data, synthetic evidence
 - [[phase2-plan]] — plan for the `airisk` scoring engine + report generator
 - [[phase2-engine]] — the built `airisk` tool: schemas, scoring, report/chart, CLI, tests
+- [[phase3-plan]] — plan for the assessment content: ratings, gaps, roadmap + renderer
+- [[messaging-and-framing]] — approved plain-English framing to reuse in README + report
 
 _Add a line here as notes are created._

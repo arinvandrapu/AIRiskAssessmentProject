@@ -35,14 +35,22 @@
 - [x] Fixed a real data bug found by tests (unquoted YAML colon in organization.yaml)
 - [ ] Open Phase 2 PR; signal explicitly when complete + ready to merge
 
-### Phase 3 — The assessment content (own PR; plan + approve first)
-- [ ] Score NIST AI RMF subcategories honestly, with synthetic evidence
-- [ ] EU AI Act risk-tier + obligations review per use case
-- [ ] Gap register (severity High/Med/Low)
-- [ ] Improvement roadmap (action / owner / target date / resources / success measure)
-- [ ] Generate scorecard + report into `reports/`
+### Phase 3 — The assessment content (branch `feat/phase3`) — PLAN AWAITING APPROVAL
+Author the real assessment + extend `airisk` to render it. See vault `phase3-plan.md`.
+**Data:**
+- [ ] `data/assessments/nist_ai_rmf.yaml` — rate all 72 subcategories honestly (evidence + notes)
+- [ ] `data/assessments/eu_ai_act.yaml` — per-use-case tier + high-risk obligation statuses
+- [ ] `data/gaps.yaml` — gap register (id, mapping, risk/impact, evidence, severity H/M/L)
+- [ ] `data/roadmap.yaml` — improvement actions (action/owner/date/resources/success measure)
+- [ ] Short authored executive-summary narrative (synthetic)
+**Code (`airisk`):**
+- [ ] Models + loaders for gaps, roadmap, EU assessment
+- [ ] Scoring: gap counts by severity; EU obligation statuses
+- [ ] Report templates: populate EU detail + gap register + roadmap + real exec summary
+- [ ] Tests for the new logic; ruff clean
+- [ ] Regenerate `reports/` with real scores; open Phase 3 PR
 
-### Phase 4 — Showcase (own PR; plan + approve first)
+### Phase 4 — Showcase (own PR; plan + approve first)  [use vault `messaging-and-framing.md`]
 - [ ] Executive-summary final report
 - [ ] Polished public README: overview, skills/tools, synthetic-data disclaimer, screenshots
 - [ ] Final review pass; make repo public + link from profile README
