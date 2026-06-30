@@ -41,7 +41,40 @@ FakeOrg has adopted AI quickly and from the bottom up, but governance has not ke
 - **Stakeholders consulted:** Risk & Compliance (Head of Compliance); IT (Director of IT); Security (CISO); Business owners (VP Sales, VP Engineering, CMO, Head of Talent, Director of Support, CFO)
 - **Evidence collected:** Draft AI acceptable-use policy; Vendor data sheets / DPAs; Support chatbot standard operating procedure; Partial vendor risk assessment; Security & data-protection policy excerpts
 
-## 3. AI use-case inventory
+## 3. How to read this report (scoring methodology)
+
+**NIST AI RMF maturity ratings.** Each subcategory (a desired outcome) is rated against the
+evidence:
+
+| Rating | Meaning | Weight |
+|---|---|---|
+| **Met** | Outcome fully achieved, documented, and operating effectively | 1.0 |
+| **Partial** | Some evidence exists but gaps remain (ad hoc, undocumented, or inconsistent) | 0.5 |
+| **Not Met** | Little or no evidence the outcome is achieved | 0.0 |
+| **Not Applicable** | Outcome does not apply in this context — **excluded** from the maturity denominator | — |
+
+Maturity % = (sum of weights of applicable subcategories) ÷ (count of applicable subcategories),
+rolled up subcategory → category → function. The NIST AI RMF is outcome-based and intentionally
+not pass/fail; this Met/Partial/Not Met overlay is the common way to make it measurable.
+
+**What each function measures.**
+
+- **Govern** — culture, policy, accountability, and the processes that run AI risk management.
+- **Map** — establishing context: purpose, risks, impacts, and where each system is used.
+- **Measure** — testing, metrics, and monitoring of AI risk and trustworthiness.
+- **Manage** — prioritizing, responding to, and recovering from the risks that were mapped/measured.
+
+**Gap severity.** Severity combines **impact** (harm to individuals, legal exposure, breadth) and
+**likelihood** (a Not Met control is more likely to let a risk materialize than a Partial one):
+
+- **High** — a high-risk-system safeguard is missing, there is direct legal exposure, or the gap is
+  systemic/org-wide.
+- **Medium** — a meaningful compliance or operational risk with narrower scope or lower likelihood.
+- **Low** — a good-practice gap with limited immediate impact.
+
+Each gap in §8 carries a one-line basis for its rating.
+
+## 4. AI use-case inventory
 
 | ID | Use case | Business unit | Owner | EU AI Act tier | Human review |
 |---|---|---|---|---|---|
@@ -52,7 +85,7 @@ FakeOrg has adopted AI quickly and from the bottom up, but governance has not ke
 | UC-05 | Marketing content generation | Marketing | CMO | minimal-risk | full |
 | UC-06 | Internal demand-forecasting model | Finance & Operations | CFO / FP&A | minimal-risk | full |
 
-## 4. NIST AI RMF maturity findings
+## 5. NIST AI RMF maturity findings
 
 **Overall:** 11.4% over 70 applicable subcategories (72 assessed, 2 N/A)
 
@@ -67,7 +100,7 @@ FakeOrg has adopted AI quickly and from the bottom up, but governance has not ke
 
 See `scorecard.md` for the per-category breakdown.
 
-## 5. EU AI Act review
+## 6. EU AI Act review
 
 Risk-tier distribution across the AI inventory:
 
@@ -100,31 +133,84 @@ _
 | Art 50(1) — Disclose to users that they are interacting with an AI | Partial | Disclosed on the web widget but not in the in-app chat — inconsistent. |
 
 
-## 6. Key gaps & risks
+## 7. Detailed findings
 
-**16 gaps** — 7 High · 6 Medium · 3 Low.
+The most material findings, with their regulatory basis, impact, and recommended action.
 
-| ID | Severity | Gap | Mapping | Risk |
+### High-risk resume screening operating without safeguards · High
+
+**Use case:** UC-01 — AI resume screening
+
+**Regulatory hook:** High-risk under the EU AI Act (Annex III.4 employment; profiling makes it always high-risk, Art 6(3) final subparagraph). Engages deployer duties Art 26(2) human oversight and Art 26(11) candidate notification, plus a mandatory GDPR Art 35 DPIA for systematic profiling. Maps to NIST MEASURE 2.11 (fairness/bias) and MAP 3.5 (human oversight).
+
+
+**Impact:** An untested ranking model can systematically disadvantage protected groups, producing discriminatory hiring outcomes. Because no human-oversight procedure exists, recruiters defer to the score — the AI effectively makes the decision. Exposure spans discrimination liability, GDPR enforcement, and reputational harm.
+
+
+**Affected:** Job applicants (external individuals), especially members of protected groups; and FakeOrg's legal and brand standing.
+
+
+**Recommendation:** Run a bias/adverse-impact audit (ACT-04), implement a human-oversight SOP (ACT-05), notify candidates (ACT-06), and complete a GDPR Art 35 DPIA (ACT-07). This is the highest-priority cluster of gaps.
+
+
+### No AI governance ownership or policy (systemic root cause) · High
+
+**Use case:** Organization-wide
+
+**Regulatory hook:** NIST AI RMF GOVERN 1.2, 2.1, 2.3 — the cross-cutting foundation on which Map, Measure, and Manage depend. Also underpins any demonstrable due-diligence story for regulators/customers.
+
+
+**Impact:** With no accountable executive and no approved policy, AI risk is never consistently identified, prioritized, or remediated — so every other gap persists by default. The organization cannot show it governs AI, which is increasingly a customer and procurement question.
+
+
+**Affected:** The whole organization; customers and regulators relying on governance assurances.
+
+
+**Recommendation:** Establish an AI governance committee with an executive owner (ACT-01), approve the AI policy (ACT-02), and stand up a risk-management process with risk tolerances (ACT-09).
+
+
+### Customer-facing chatbot transparency gap · Medium
+
+**Use case:** UC-02 — Customer support chatbot
+
+**Regulatory hook:** EU AI Act Art 50(1) transparency — the disclosure duty falls on FakeOrg as the provider/operator of the assembled chatbot. Maps to NIST MEASURE 2.4 (production monitoring) and 3.3 (user feedback).
+
+
+**Impact:** Users on the in-app surface may not realize they are interacting with AI, and there is no evaluation of harmful or incorrect responses. Individual harm is modest, but it is a clear, low-cost compliance gap to close before Art 50 applies (2 Aug 2026).
+
+
+**Affected:** Customers using in-app support.
+
+
+**Recommendation:** Show a consistent AI disclosure across every chatbot surface (ACT-06) and add output evaluation plus an appeal channel (ACT-10).
+
+
+
+## 8. Key gaps & risks
+
+**16 gaps** — 7 High · 6 Medium · 3 Low. Severity basis is defined in §3.
+
+| ID | Severity | Gap | Mapping | Risk & severity basis |
 |---|---|---|---|---|
-| GAP-01 | High | No AI governance ownership or committee | GOVERN 2.1, GOVERN 2.3 | AI decisions are made ad hoc with no accountability; risks go unmanaged across the org. |
-| GAP-02 | High | No approved AI policy | GOVERN 1.2, GOVERN 4.1 | Staff lack binding guidance; inconsistent and unsafe AI use. |
-| GAP-03 | Medium | No AI use-case register or intake process | GOVERN 1.6 | Shadow AI proliferates; the org cannot see or govern what it runs. |
-| GAP-04 | High | No bias/fairness testing of high-risk resume screening | MEASURE 2.11 | Potential discriminatory hiring outcomes; legal and reputational exposure. |
-| GAP-05 | High | No human-oversight design for resume screening | Art 26(2), MAP 3.5 | Automation bias; the AI effectively makes hiring decisions unchecked. |
-| GAP-06 | High | Candidates not informed of AI use | Art 26(11) | Breach of EU AI Act deployer transparency duty for high-risk systems. |
+| GAP-01 | High | No AI governance ownership or committee | GOVERN 2.1, GOVERN 2.3 | AI decisions are made ad hoc with no accountability; risks go unmanaged across the org.<br>_Why High: Systemic root cause — without an owner, no other gap reliably gets fixed; org-wide impact, near-certain to persist._ |
+| GAP-02 | High | No approved AI policy | GOVERN 1.2, GOVERN 4.1 | Staff lack binding guidance; inconsistent and unsafe AI use.<br>_Why High: Foundational control absent; affects every employee's AI use, high likelihood of inconsistent/unsafe practice._ |
+| GAP-03 | Medium | No AI use-case register or intake process | GOVERN 1.6 | Shadow AI proliferates; the org cannot see or govern what it runs.<br>_Why Medium: Process control, not a direct individual harm; enables other risks but impact is indirect._ |
+| GAP-04 | High | No bias/fairness testing of high-risk resume screening | MEASURE 2.11 | Potential discriminatory hiring outcomes; legal and reputational exposure.<br>_Why High: High-risk system; missing safeguard can directly harm candidates (discrimination) with clear legal exposure._ |
+| GAP-05 | High | No human-oversight design for resume screening | Art 26(2), MAP 3.5 | Automation bias; the AI effectively makes hiring decisions unchecked.<br>_Why High: High-risk system effectively deciding unchecked; EU Art 26(2) deployer duty; affects candidates directly._ |
+| GAP-06 | High | Candidates not informed of AI use | Art 26(11) | Breach of EU AI Act deployer transparency duty for high-risk systems.<br>_Why High: Direct breach of an in-force transparency duty for a high-risk system; affects every applicant._ |
 | GAP-07 | High | No DPIA or fundamental-rights review for the high-risk screening tool | GDPR Art 35, MEASURE 2.10 | A GDPR Art 35 DPIA is mandatory for systematic candidate profiling, and rights impacts are unassessed. (Note: an EU AI Act Art 27 FRIA is NOT triggered for a private Annex III.4 deployer.)
- |
-| GAP-08 | Medium | Inconsistent AI disclosure on support chatbot | Art 50(1) | Transparency-obligation gap; users may not know they are talking to AI. |
-| GAP-09 | Medium | No AI-specific vendor assessment | GOVERN 6.1, MANAGE 3.1 | Third-party AI risk is unmanaged; unclear whether customer data trains vendor models. |
-| GAP-10 | Medium | Shadow AI and no data-handling guidance | GOVERN 1.1, MAP 4.1 | Confidential data or source code may leak to third-party AI services. |
-| GAP-11 | Medium | No model documentation for in-house forecasting model | MAP 2.3, MEASURE 2.9, MANAGE 3.2 | Undetected model drift; loss of capability if the owner leaves. |
-| GAP-12 | High | No AI risk-management process or risk tolerances | GOVERN 1.3, GOVERN 1.4, MAP 1.5 | Risks are neither prioritized nor treated consistently. |
-| GAP-13 | Medium | No AI incident response or deactivation capability | MANAGE 2.4, MANAGE 4.1 | A misbehaving AI system cannot be promptly detected or stopped. |
-| GAP-14 | Low | No AI risk-management training | GOVERN 2.2 | Personnel cannot execute governance duties they are unaware of. |
-| GAP-15 | Low | No chatbot output evaluation or log-retention policy | MEASURE 2.4 | Harmful answers go undetected; privacy/retention exposure on stored chats. |
-| GAP-16 | Low | No user appeal, feedback, or explanation channel for AI outcomes | MEASURE 3.3, Art 86 | Errors persist; affected people have no recourse or right to explanation (EU AI Act Art 86). |
+<br>_Why High: GDPR Art 35 DPIA is legally mandatory for this profiling; non-compliance plus unassessed rights impacts on candidates._ |
+| GAP-08 | Medium | Inconsistent AI disclosure on support chatbot | Art 50(1) | Transparency-obligation gap; users may not know they are talking to AI.<br>_Why Medium: Real transparency gap but limited harm — users still reach human agents; partial coverage already exists._ |
+| GAP-09 | Medium | No AI-specific vendor assessment | GOVERN 6.1, MANAGE 3.1 | Third-party AI risk is unmanaged; unclear whether customer data trains vendor models.<br>_Why Medium: Latent third-party risk across several tools; impact data-dependent, likelihood moderate._ |
+| GAP-10 | Medium | Shadow AI and no data-handling guidance | GOVERN 1.1, MAP 4.1 | Confidential data or source code may leak to third-party AI services.<br>_Why Medium: Plausible data/IP leakage; impact significant but likelihood and exposure depend on user behaviour._ |
+| GAP-11 | Medium | No model documentation for in-house forecasting model | MAP 2.3, MEASURE 2.9, MANAGE 3.2 | Undetected model drift; loss of capability if the owner leaves.<br>_Why Medium: Operational/internal impact only (no external individuals); drift and key-person risk are real but contained._ |
+| GAP-12 | High | No AI risk-management process or risk tolerances | GOVERN 1.3, GOVERN 1.4, MAP 1.5 | Risks are neither prioritized nor treated consistently.<br>_Why High: Systemic — with no process or tolerances nothing is prioritized or treated; underpins most other gaps._ |
+| GAP-13 | Medium | No AI incident response or deactivation capability | MANAGE 2.4, MANAGE 4.1 | A misbehaving AI system cannot be promptly detected or stopped.<br>_Why Medium: High impact if triggered, but lower likelihood; a general incident process gives partial fallback._ |
+| GAP-14 | Low | No AI risk-management training | GOVERN 2.2 | Personnel cannot execute governance duties they are unaware of.<br>_Why Low: Enabling weakness rather than a direct harm; impact realized only via other gaps._ |
+| GAP-15 | Low | No chatbot output evaluation or log-retention policy | MEASURE 2.4 | Harmful answers go undetected; privacy/retention exposure on stored chats.<br>_Why Low: Limited immediate harm; privacy exposure is latent and bounded to support interactions._ |
+| GAP-16 | Low | No user appeal, feedback, or explanation channel for AI outcomes | MEASURE 3.3, Art 86 | Errors persist; affected people have no recourse or right to explanation (EU AI Act Art 86).<br>_Why Low: Real but lower near-term impact; the Art 86 right to explanation applies from Aug 2026, giving lead time._ |
 
-## 7. Governance improvement plan
+## 9. Governance improvement plan
 
 | ID | Priority | Action | Owner | Target | Success measure |
 |---|---|---|---|---|---|

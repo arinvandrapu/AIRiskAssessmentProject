@@ -18,3 +18,56 @@ key_findings:
   - No GDPR Art 35 DPIA for the high-risk screening tool (mandatory for systematic candidate profiling).
   - MEASURE is the weakest function — no AI testing, monitoring, or metrics across the board.
   - Existing vendor-security and GDPR programs give a foundation to extend to AI-specific risk.
+
+# Deep-dive analysis of the most material findings.
+detailed_findings:
+  - title: High-risk resume screening operating without safeguards
+    use_case: UC-01 — AI resume screening
+    severity: High
+    regulatory_hook: >
+      High-risk under the EU AI Act (Annex III.4 employment; profiling makes it always high-risk,
+      Art 6(3) final subparagraph). Engages deployer duties Art 26(2) human oversight and Art 26(11)
+      candidate notification, plus a mandatory GDPR Art 35 DPIA for systematic profiling. Maps to
+      NIST MEASURE 2.11 (fairness/bias) and MAP 3.5 (human oversight).
+    impact: >
+      An untested ranking model can systematically disadvantage protected groups, producing
+      discriminatory hiring outcomes. Because no human-oversight procedure exists, recruiters defer
+      to the score — the AI effectively makes the decision. Exposure spans discrimination liability,
+      GDPR enforcement, and reputational harm.
+    affected: >
+      Job applicants (external individuals), especially members of protected groups; and FakeOrg's
+      legal and brand standing.
+    recommendation: >
+      Run a bias/adverse-impact audit (ACT-04), implement a human-oversight SOP (ACT-05), notify
+      candidates (ACT-06), and complete a GDPR Art 35 DPIA (ACT-07). This is the highest-priority
+      cluster of gaps.
+  - title: No AI governance ownership or policy (systemic root cause)
+    use_case: Organization-wide
+    severity: High
+    regulatory_hook: >
+      NIST AI RMF GOVERN 1.2, 2.1, 2.3 — the cross-cutting foundation on which Map, Measure, and
+      Manage depend. Also underpins any demonstrable due-diligence story for regulators/customers.
+    impact: >
+      With no accountable executive and no approved policy, AI risk is never consistently identified,
+      prioritized, or remediated — so every other gap persists by default. The organization cannot
+      show it governs AI, which is increasingly a customer and procurement question.
+    affected: >
+      The whole organization; customers and regulators relying on governance assurances.
+    recommendation: >
+      Establish an AI governance committee with an executive owner (ACT-01), approve the AI policy
+      (ACT-02), and stand up a risk-management process with risk tolerances (ACT-09).
+  - title: Customer-facing chatbot transparency gap
+    use_case: UC-02 — Customer support chatbot
+    severity: Medium
+    regulatory_hook: >
+      EU AI Act Art 50(1) transparency — the disclosure duty falls on FakeOrg as the provider/operator
+      of the assembled chatbot. Maps to NIST MEASURE 2.4 (production monitoring) and 3.3 (user feedback).
+    impact: >
+      Users on the in-app surface may not realize they are interacting with AI, and there is no
+      evaluation of harmful or incorrect responses. Individual harm is modest, but it is a clear,
+      low-cost compliance gap to close before Art 50 applies (2 Aug 2026).
+    affected: >
+      Customers using in-app support.
+    recommendation: >
+      Show a consistent AI disclosure across every chatbot surface (ACT-06) and add output evaluation
+      plus an appeal channel (ACT-10).

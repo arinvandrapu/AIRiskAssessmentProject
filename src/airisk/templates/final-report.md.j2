@@ -49,7 +49,40 @@
 - **Evidence collected:** {{ evidence_str }}
 {% endif %}
 
-## 3. AI use-case inventory
+## 3. How to read this report (scoring methodology)
+
+**NIST AI RMF maturity ratings.** Each subcategory (a desired outcome) is rated against the
+evidence:
+
+| Rating | Meaning | Weight |
+|---|---|---|
+| **Met** | Outcome fully achieved, documented, and operating effectively | 1.0 |
+| **Partial** | Some evidence exists but gaps remain (ad hoc, undocumented, or inconsistent) | 0.5 |
+| **Not Met** | Little or no evidence the outcome is achieved | 0.0 |
+| **Not Applicable** | Outcome does not apply in this context — **excluded** from the maturity denominator | — |
+
+Maturity % = (sum of weights of applicable subcategories) ÷ (count of applicable subcategories),
+rolled up subcategory → category → function. The NIST AI RMF is outcome-based and intentionally
+not pass/fail; this Met/Partial/Not Met overlay is the common way to make it measurable.
+
+**What each function measures.**
+
+- **Govern** — culture, policy, accountability, and the processes that run AI risk management.
+- **Map** — establishing context: purpose, risks, impacts, and where each system is used.
+- **Measure** — testing, metrics, and monitoring of AI risk and trustworthiness.
+- **Manage** — prioritizing, responding to, and recovering from the risks that were mapped/measured.
+
+**Gap severity.** Severity combines **impact** (harm to individuals, legal exposure, breadth) and
+**likelihood** (a Not Met control is more likely to let a risk materialize than a Partial one):
+
+- **High** — a high-risk-system safeguard is missing, there is direct legal exposure, or the gap is
+  systemic/org-wide.
+- **Medium** — a meaningful compliance or operational risk with narrower scope or lower likelihood.
+- **Low** — a good-practice gap with limited immediate impact.
+
+Each gap in §8 carries a one-line basis for its rating.
+
+## 4. AI use-case inventory
 
 | ID | Use case | Business unit | Owner | EU AI Act tier | Human review |
 |---|---|---|---|---|---|
@@ -57,7 +90,7 @@
 | {{ uc.id }} | {{ uc.name }} | {{ uc.business_unit | default("—") }} | {{ uc.owner | default("—") }} | {{ uc.eu_ai_act_tier | default("—") }} | {{ uc.human_review | default("—") }} |
 {% endfor %}
 
-## 4. NIST AI RMF maturity findings
+## 5. NIST AI RMF maturity findings
 
 **Overall:** {{ score.overall.maturity_pct | pct }} over {{ score.overall.applicable }} applicable subcategories ({{ score.overall.assessed }} assessed, {{ score.overall.assessed - score.overall.applicable }} N/A)
 
@@ -73,7 +106,7 @@
 
 See `scorecard.md` for the per-category breakdown.
 
-## 5. EU AI Act review
+## 6. EU AI Act review
 
 Risk-tier distribution across the AI inventory:
 
@@ -96,21 +129,44 @@ _{{ uc.rationale }}_
 
 {% endfor %}
 
-## 6. Key gaps & risks
+## 7. Detailed findings
+
+{% if findings and findings.detailed_findings %}
+The most material findings, with their regulatory basis, impact, and recommended action.
+
+{% for df in findings.detailed_findings %}
+### {{ df.title }} · {{ df.severity }}
+
+**Use case:** {{ df.use_case }}
+
+**Regulatory hook:** {{ df.regulatory_hook }}
+
+**Impact:** {{ df.impact }}
+
+**Affected:** {{ df.affected }}
+
+**Recommendation:** {{ df.recommendation }}
+
+{% endfor %}
+{% else %}
+_No detailed findings loaded._
+{% endif %}
+
+## 8. Key gaps & risks
 
 {% if gaps %}
-**{{ gap_counts.total }} gaps** — {{ gap_counts.High }} High · {{ gap_counts.Medium }} Medium · {{ gap_counts.Low }} Low.
+**{{ gap_counts.total }} gaps** — {{ gap_counts.High }} High · {{ gap_counts.Medium }} Medium · {{ gap_counts.Low }} Low. Severity basis is defined in §3.
 
-| ID | Severity | Gap | Mapping | Risk |
+| ID | Severity | Gap | Mapping | Risk & severity basis |
 |---|---|---|---|---|
 {% for g in gaps %}
-| {{ g.id }} | {{ g.severity }} | {{ g.title }} | {{ g.mapping | join(", ") }} | {{ g.risk | default("") }} |
+| {{ g.id }} | {{ g.severity }} | {{ g.title }} | {{ g.mapping | join(", ") }} | {{ g.risk | default("") }}{% if g.severity_rationale %}<br>_Why {{ g.severity }}: {{ g.severity_rationale }}_{% endif %} |
 {% endfor %}
 {% else %}
 _No gap register loaded._
 {% endif %}
 
-## 7. Governance improvement plan
+## 9. Governance improvement plan
 
 {% if roadmap %}
 | ID | Priority | Action | Owner | Target | Success measure |

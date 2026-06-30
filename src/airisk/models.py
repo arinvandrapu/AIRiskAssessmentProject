@@ -176,6 +176,7 @@ class Gap(_Model):
     risk: str | None = None
     evidence: list[str] = []
     severity: Severity
+    severity_rationale: str | None = None  # why this gap got this severity
 
 
 class GapsFile(_Model):
@@ -223,6 +224,17 @@ class EUAssessmentFile(_Model):
 # --------------------------------------------------------------------------- #
 # Executive narrative (data/findings.yaml)
 # --------------------------------------------------------------------------- #
+class DetailedFinding(_Model):
+    title: str
+    use_case: str | None = None
+    severity: Severity | None = None
+    regulatory_hook: str | None = None
+    impact: str | None = None
+    affected: str | None = None
+    recommendation: str | None = None
+
+
 class Findings(_Model):
     executive_summary: str | None = None
     key_findings: list[str] = []
+    detailed_findings: list[DetailedFinding] = []
