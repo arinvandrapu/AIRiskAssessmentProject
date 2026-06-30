@@ -12,7 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any
 
-from .models import STATUS_WEIGHTS, InventoryFile, NistFramework, Status, UseCase
+from .models import STATUS_WEIGHTS, Gap, InventoryFile, NistFramework, Severity, Status, UseCase
 
 
 @dataclass
@@ -113,3 +113,12 @@ def high_risk_obligations(eu_ai_act: dict[str, Any]) -> dict[str, list[dict[str,
         "provider": obligations.get("provider_high_risk", []),
         "deployer": obligations.get("deployer_high_risk", []),
     }
+
+
+def gap_summary(gaps: list[Gap]) -> dict[str, int]:
+    """Count gaps by severity (High/Medium/Low), in severity order, plus total."""
+    counts = {sev.value: 0 for sev in Severity}
+    for gap in gaps:
+        counts[gap.severity.value] += 1
+    counts["total"] = len(gaps)
+    return counts

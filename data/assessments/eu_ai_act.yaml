@@ -1,0 +1,80 @@
+# EU AI Act per-use-case assessment for FakeOrg (SYNTHETIC)
+# Tiers classified against frameworks/eu_ai_act.yaml. For the high-risk use case the
+# DEPLOYER obligations are assessed (FakeOrg deploys a third-party tool); provider
+# obligations (Arts 9-15) sit with the vendor, but FakeOrg holds no assurance of them.
+#   status: Met | Partial | Not Met | Not Applicable
+
+use_cases:
+  - id: UC-01
+    name: AI resume screening
+    tier: high-risk
+    role: deployer
+    rationale: Annex III.4 (employment/recruitment); performs profiling, so always high-risk (Art 6(4)).
+    obligations:
+      - ref: Art 26(1)
+        requirement: Use in accordance with the provider's instructions for use
+        status: Partial
+        note: Used on vendor defaults; no documented instructions-for-use on file.
+      - ref: Art 26(2)
+        requirement: Assign competent, trained human oversight
+        status: Not Met
+        note: No named, trained overseer; recruiters rely on the ranking without guidance.
+      - ref: Art 26(5)
+        requirement: Monitor operation; report serious incidents
+        status: Not Met
+        note: No monitoring of outcomes or incident-reporting path.
+      - ref: Art 26(6)
+        requirement: Keep logs for at least 6 months (where under deployer control)
+        status: Partial
+        note: Vendor retains logs; FakeOrg has no defined retention/access control.
+      - ref: Art 26(11)
+        requirement: Inform affected persons subject to Annex III decisions
+        status: Not Met
+        note: Candidates are not told AI screening is used.
+      - ref: Art 27
+        requirement: Fundamental Rights Impact Assessment (FRIA)
+        status: Not Met
+        note: No FRIA performed for the high-risk use case.
+      - ref: Art 86
+        requirement: Provide affected persons a meaningful explanation
+        status: Not Met
+        note: No mechanism for candidates to obtain an explanation.
+
+  - id: UC-02
+    name: Customer support chatbot
+    tier: limited-risk
+    role: deployer
+    rationale: Article 50(1) transparency — users must be told they interact with an AI.
+    obligations:
+      - ref: Art 50(1)
+        requirement: Disclose to users that they are interacting with an AI
+        status: Partial
+        note: Disclosed on the web widget but not in the in-app chat — inconsistent.
+
+  - id: UC-03
+    name: Sales copilot
+    tier: minimal-risk
+    role: deployer
+    rationale: No Annex III use; minimal risk. Governance via internal policy (shadow-IT risk).
+    obligations: []
+
+  - id: UC-04
+    name: Code assistant
+    tier: minimal-risk
+    role: deployer
+    rationale: No Annex III use; minimal risk. IP/license considerations are policy matters.
+    obligations: []
+
+  - id: UC-05
+    name: Marketing content generation
+    tier: minimal-risk
+    role: deployer
+    rationale: No Annex III use; minimal risk. Note Art 50(2)/(4) labelling if synthetic media is published.
+    obligations: []
+
+  - id: UC-06
+    name: Internal demand-forecasting model
+    tier: minimal-risk
+    role: provider
+    rationale: In-house model; no Annex III use; minimal risk. Governance via model documentation.
+    obligations: []

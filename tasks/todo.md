@@ -35,20 +35,20 @@
 - [x] Fixed a real data bug found by tests (unquoted YAML colon in organization.yaml)
 - [ ] Open Phase 2 PR; signal explicitly when complete + ready to merge
 
-### Phase 3 — The assessment content (branch `feat/phase3`) — PLAN AWAITING APPROVAL
-Author the real assessment + extend `airisk` to render it. See vault `phase3-plan.md`.
+### Phase 3 — The assessment content (branch `feat/phase3`) — BUILT, IN REVIEW
 **Data:**
-- [ ] `data/assessments/nist_ai_rmf.yaml` — rate all 72 subcategories honestly (evidence + notes)
-- [ ] `data/assessments/eu_ai_act.yaml` — per-use-case tier + high-risk obligation statuses
-- [ ] `data/gaps.yaml` — gap register (id, mapping, risk/impact, evidence, severity H/M/L)
-- [ ] `data/roadmap.yaml` — improvement actions (action/owner/date/resources/success measure)
-- [ ] Short authored executive-summary narrative (synthetic)
+- [x] `data/assessments/nist_ai_rmf.yaml` — all 72 subcategories rated honestly (→ 11.4% overall)
+- [x] `data/assessments/eu_ai_act.yaml` — per-use-case tier + high-risk obligation statuses
+- [x] `data/gaps.yaml` — 16-gap register (7 High / 6 Medium / 3 Low)
+- [x] `data/roadmap.yaml` — 10 prioritized improvement actions
+- [x] `data/findings.yaml` — authored executive-summary narrative + key findings
 **Code (`airisk`):**
-- [ ] Models + loaders for gaps, roadmap, EU assessment
-- [ ] Scoring: gap counts by severity; EU obligation statuses
-- [ ] Report templates: populate EU detail + gap register + roadmap + real exec summary
-- [ ] Tests for the new logic; ruff clean
-- [ ] Regenerate `reports/` with real scores; open Phase 3 PR
+- [x] Models + loaders for gaps, roadmap, EU assessment, findings (optional → skeleton still works)
+- [x] Scoring: gap counts by severity
+- [x] Report templates: EU obligation tables + gap register + roadmap + real exec summary
+- [x] Tests for the new logic (11 passing); ruff clean
+- [x] Regenerated `reports/` with real scores + meaningful chart
+- [ ] Open Phase 3 PR; signal when complete + ready to merge
 
 ### Phase 4 — Showcase (own PR; plan + approve first)  [use vault `messaging-and-framing.md`]
 - [ ] Executive-summary final report
