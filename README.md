@@ -55,6 +55,6 @@ airisk assess              # score + render reports/ and the maturity chart
 Built incrementally (see `tasks/todo.md`):
 
 - ✅ Phase 1 — framework catalogs + FakeOrg data + evidence
-- ✅ Phase 2 — `airisk` scoring engine + report generator (this)
-- ⏳ Phase 3 — score the controls; gap register + improvement roadmap
+- ✅ Phase 2 — `airisk` scoring engine + report generator
+- ✅ Phase 3 — scored assessment (11.4% maturity), 16-gap register + improvement roadmap
 - ⏳ Phase 4 — showcase polish

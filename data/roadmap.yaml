@@ -1,0 +1,85 @@
+# FakeOrg AI governance improvement roadmap (SYNTHETIC)
+# Prioritized actions addressing the gap register.
+#   priority: High | Medium | Low
+
+actions:
+  - id: ACT-01
+    action: Establish an AI governance committee and assign an executive owner.
+    owner: Executive sponsor (CISO chairs)
+    target: 2026-Q3
+    resources: Steering-committee time; charter; ~0.2 FTE program lead.
+    success_measure: Chartered committee meets monthly; named accountable executive.
+    addresses: [GAP-01, GAP-12]
+    priority: High
+  - id: ACT-02
+    action: Finalize and approve the AI acceptable-use policy, including high-risk provisions.
+    owner: Head of Compliance
+    target: 2026-Q3
+    resources: Legal review; policy author; comms rollout.
+    success_measure: Board-approved policy published; staff attestation complete.
+    addresses: [GAP-02, GAP-10]
+    priority: High
+  - id: ACT-03
+    action: Stand up a central AI use-case register with an intake and review gate.
+    owner: Director of IT
+    target: 2026-Q3
+    resources: Register tooling; intake workflow; reviewer time.
+    success_measure: 100% of known AI tools registered; new tools reviewed before adoption.
+    addresses: [GAP-03]
+    priority: Medium
+  - id: ACT-04
+    action: Commission a bias/adverse-impact audit of the resume-screening tool.
+    owner: Head of Talent (with vendor)
+    target: 2026-Q3
+    resources: Vendor fairness report; independent reviewer; data access.
+    success_measure: Documented bias audit with remediation actions tracked.
+    addresses: [GAP-04]
+    priority: High
+  - id: ACT-05
+    action: Define and implement a human-oversight SOP for resume screening.
+    owner: Head of Talent
+    target: 2026-Q4
+    resources: SOP author; recruiter training; QA sampling.
+    success_measure: Documented SOP; recruiters trained; override/review rate monitored.
+    addresses: [GAP-05]
+    priority: High
+  - id: ACT-06
+    action: Add AI transparency notices — inform candidates; fix chatbot disclosure everywhere.
+    owner: Head of Talent and Director of Support
+    target: 2026-Q3
+    resources: Notice copy; ATS + chatbot config changes.
+    success_measure: Candidate notice live; AI disclosure shown in all chatbot surfaces.
+    addresses: [GAP-06, GAP-08]
+    priority: High
+  - id: ACT-07
+    action: Conduct a Fundamental Rights Impact Assessment for the high-risk use case.
+    owner: Head of Compliance
+    target: 2026-Q4
+    resources: FRIA template; stakeholder workshops.
+    success_measure: Completed FRIA filed; mitigations assigned and tracked.
+    addresses: [GAP-07]
+    priority: High
+  - id: ACT-08
+    action: Extend vendor risk assessment with an AI module (bias, training-data use, model docs).
+    owner: Security & IT
+    target: 2026-Q4
+    resources: Updated questionnaire; reviewer training.
+    success_measure: All AI vendors re-assessed with the AI module; gaps logged.
+    addresses: [GAP-09, GAP-11]
+    priority: Medium
+  - id: ACT-09
+    action: Roll out an AI risk-management process, risk tolerances, and staff training.
+    owner: Head of Compliance
+    target: 2027-Q1
+    resources: Process design; risk-appetite workshop; training content.
+    success_measure: Documented process in use; risk tolerances approved; >90% trained.
+    addresses: [GAP-12, GAP-14]
+    priority: Medium
+  - id: ACT-10
+    action: Define AI incident response, post-deployment monitoring, deactivation, and appeal channels.
+    owner: CISO and Director of Support
+    target: 2027-Q1
+    resources: Runbook; monitoring tooling; user-facing feedback path.
+    success_measure: AI incident runbook tested; appeal channel live; monitoring in place.
+    addresses: [GAP-13, GAP-15, GAP-16]
+    priority: Medium

@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from airisk.models import Category, Function, NistFramework, Status, Subcategory
-from airisk.scoring import score_nist
+from airisk.models import Category, Function, Gap, NistFramework, Status, Subcategory
+from airisk.scoring import gap_summary, score_nist
 
 
 def _framework() -> NistFramework:
@@ -53,3 +53,16 @@ def test_rollup_matches_function_and_category() -> None:
     # one function, one category -> identical rollups
     assert func.summary.maturity == cat.summary.maturity == 0.5
     assert report.overall.maturity == 0.5
+
+
+def test_gap_summary_counts_by_severity() -> None:
+    gaps = [
+        Gap(id="GAP-01", title="a", severity="High"),
+        Gap(id="GAP-02", title="b", severity="High"),
+        Gap(id="GAP-03", title="c", severity="Low"),
+    ]
+    counts = gap_summary(gaps)
+    assert counts["High"] == 2
+    assert counts["Medium"] == 0
+    assert counts["Low"] == 1
+    assert counts["total"] == 3

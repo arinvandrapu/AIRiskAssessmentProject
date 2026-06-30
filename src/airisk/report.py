@@ -7,8 +7,20 @@ from typing import Any
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-from .models import InventoryFile, OrgFile
-from .scoring import ScoreReport, eu_tier_distribution, high_risk_obligations
+from .models import (
+    EUAssessmentFile,
+    Findings,
+    GapsFile,
+    InventoryFile,
+    OrgFile,
+    RoadmapFile,
+)
+from .scoring import (
+    ScoreReport,
+    eu_tier_distribution,
+    gap_summary,
+    high_risk_obligations,
+)
 
 _TEMPLATES_DIR = Path(__file__).parent / "templates"
 
@@ -30,6 +42,11 @@ def build_context(
     score: ScoreReport,
     eu_ai_act: dict[str, Any],
     chart_filename: str | None,
+    *,
+    gaps: GapsFile | None = None,
+    roadmap: RoadmapFile | None = None,
+    findings: Findings | None = None,
+    eu_assessment: EUAssessmentFile | None = None,
 ) -> dict[str, Any]:
     # Pre-join inline/looped strings in Python so the Markdown templates stay
     # simple and don't fight Jinja's trim_blocks whitespace handling.
@@ -46,6 +63,10 @@ def build_context(
         for tier, ucs in distribution.items()
     ]
 
+    gap_list = gaps.gaps if gaps else []
+    # Only show use-case obligation tables for cases that actually carry obligations.
+    eu_cases = [uc for uc in (eu_assessment.use_cases if eu_assessment else []) if uc.obligations]
+
     return {
         "org": org.organization,
         "assessment": a,
@@ -58,6 +79,11 @@ def build_context(
         "eu_rows": eu_rows,
         "has_high_risk": "high-risk" in distribution,
         "eu_obligations": high_risk_obligations(eu_ai_act),
+        "eu_cases": eu_cases,
+        "gaps": gap_list,
+        "gap_counts": gap_summary(gap_list) if gap_list else None,
+        "roadmap": roadmap.actions if roadmap else [],
+        "findings": findings,
         "chart_filename": chart_filename,
     }
 

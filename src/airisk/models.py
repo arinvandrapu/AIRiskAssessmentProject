@@ -156,3 +156,73 @@ class AssessmentFile(_Model):
 
     def status_by_id(self) -> dict[str, Status | None]:
         return {r.id: r.status for r in self.ratings}
+
+
+# --------------------------------------------------------------------------- #
+# Gap register (data/gaps.yaml) and roadmap (data/roadmap.yaml) — Phase 3
+# --------------------------------------------------------------------------- #
+class Severity(StrEnum):
+    HIGH = "High"
+    MEDIUM = "Medium"
+    LOW = "Low"
+
+
+class Gap(_Model):
+    id: str
+    title: str
+    description: str | None = None
+    framework: str | None = None
+    mapping: list[str] = []
+    risk: str | None = None
+    evidence: list[str] = []
+    severity: Severity
+
+
+class GapsFile(_Model):
+    gaps: list[Gap]
+
+
+class RoadmapAction(_Model):
+    id: str
+    action: str
+    owner: str | None = None
+    target: str | None = None
+    resources: str | None = None
+    success_measure: str | None = None
+    addresses: list[str] = []
+    priority: Severity
+
+
+class RoadmapFile(_Model):
+    actions: list[RoadmapAction]
+
+
+# --------------------------------------------------------------------------- #
+# EU AI Act per-use-case assessment (data/assessments/eu_ai_act.yaml)
+# --------------------------------------------------------------------------- #
+class EUObligation(_Model):
+    ref: str
+    requirement: str | None = None
+    status: Status | None = None
+    note: str | None = None
+
+
+class EUUseCaseAssessment(_Model):
+    id: str
+    name: str | None = None
+    tier: str | None = None
+    role: str | None = None
+    rationale: str | None = None
+    obligations: list[EUObligation] = []
+
+
+class EUAssessmentFile(_Model):
+    use_cases: list[EUUseCaseAssessment]
+
+
+# --------------------------------------------------------------------------- #
+# Executive narrative (data/findings.yaml)
+# --------------------------------------------------------------------------- #
+class Findings(_Model):
+    executive_summary: str | None = None
+    key_findings: list[str] = []

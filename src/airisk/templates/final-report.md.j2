@@ -14,12 +14,21 @@
 
 {{ org.name }} is a {% if org.industry %}{{ org.industry }} {% endif %}organization{% if org.size %} (~{{ org.size.employees }} employees){% endif %} with an AI governance posture rated **{{ org.ai_governance_posture.maturity if org.ai_governance_posture else "unknown" }}**.
 
-Overall NIST AI RMF maturity is **{{ score.overall.maturity_pct | pct }}** across {{ score.overall.assessed }}/{{ score.overall.total }} assessed subcategories.
+{% if findings and findings.executive_summary %}
+{{ findings.executive_summary }}
+{% endif %}
 
+**Overall NIST AI RMF maturity:** {{ score.overall.maturity_pct | pct }} across {{ score.overall.assessed }}/{{ score.overall.total }} assessed subcategories{% if gap_counts %}; **{{ gap_counts.total }} gaps identified** ({{ gap_counts.High }} High, {{ gap_counts.Medium }} Medium, {{ gap_counts.Low }} Low){% endif %}.
+
+{% if findings and findings.key_findings %}
+**Key findings**
+{% for kf in findings.key_findings %}
+- {{ kf }}
+{% endfor %}
+{% endif %}
 {% if score.overall.assessed == 0 %}
-> _This is a report skeleton: control ratings have not been entered yet (Phase 3). The
-> structure, inventory, and EU AI Act classification below are final; maturity scores
-> populate once `data/assessments/nist_ai_rmf.yaml` is filled in._
+> _Report skeleton: control ratings have not been entered yet. Structure, inventory, and EU AI
+> Act classification are final; maturity scores populate once the ratings are filled in._
 {% endif %}
 
 ## 2. Scope & methodology
@@ -66,32 +75,49 @@ See `scorecard.md` for the per-category breakdown.
 
 ## 5. EU AI Act review
 
-Each AI use case is classified by EU AI Act risk tier:
+Risk-tier distribution across the AI inventory:
 
 {% for row in eu_rows %}
 - **{{ row.tier }}** ({{ row.count }}): {{ row.names }}
 {% endfor %}
 
-{% if has_high_risk %}
-### High-risk obligations checklist
+{% for uc in eu_cases %}
+### {{ uc.id }} — {{ uc.name }} · {{ uc.tier }}
 
-The high-risk use case(s) above trigger the following obligations (compliance status assessed in Phase 3):
-
-**Provider obligations**
-{% for o in eu_obligations.provider %}
-- [ ] {{ o.article }} — {{ o.title }}
-{% endfor %}
-
-**Deployer obligations**
-{% for o in eu_obligations.deployer %}
-- [ ] {{ o.article }} — {{ o.title }}
-{% endfor %}
+{% if uc.rationale %}
+_{{ uc.rationale }}_
 {% endif %}
+
+| Obligation | Status | Note |
+|---|---|---|
+{% for o in uc.obligations %}
+| {{ o.ref }}{% if o.requirement %} — {{ o.requirement }}{% endif %} | {{ o.status | default("—") }} | {{ o.note | default("") }} |
+{% endfor %}
+
+{% endfor %}
 
 ## 6. Key gaps & risks
 
-_Populated in Phase 3 from the gap register._
+{% if gaps %}
+**{{ gap_counts.total }} gaps** — {{ gap_counts.High }} High · {{ gap_counts.Medium }} Medium · {{ gap_counts.Low }} Low.
+
+| ID | Severity | Gap | Mapping | Risk |
+|---|---|---|---|---|
+{% for g in gaps %}
+| {{ g.id }} | {{ g.severity }} | {{ g.title }} | {{ g.mapping | join(", ") }} | {{ g.risk | default("") }} |
+{% endfor %}
+{% else %}
+_No gap register loaded._
+{% endif %}
 
 ## 7. Governance improvement plan
 
-_Populated in Phase 3 from the improvement roadmap._
+{% if roadmap %}
+| ID | Priority | Action | Owner | Target | Success measure |
+|---|---|---|---|---|---|
+{% for a in roadmap %}
+| {{ a.id }} | {{ a.priority }} | {{ a.action }} | {{ a.owner | default("—") }} | {{ a.target | default("—") }} | {{ a.success_measure | default("") }} |
+{% endfor %}
+{% else %}
+_No roadmap loaded._
+{% endif %}

@@ -15,6 +15,7 @@ Durable notes for the AI Risk Assessment Project. Conventions live in the worksp
 - [[phase2-plan]] — plan for the `airisk` scoring engine + report generator
 - [[phase2-engine]] — the built `airisk` tool: schemas, scoring, report/chart, CLI, tests
 - [[phase3-plan]] — plan for the assessment content: ratings, gaps, roadmap + renderer
+- [[phase3-assessment]] — built assessment: 11.4% maturity, 16 gaps, 10-action roadmap
 - [[messaging-and-framing]] — approved plain-English framing to reuse in README + report
 
 _Add a line here as notes are created._

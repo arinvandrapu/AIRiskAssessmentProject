@@ -9,7 +9,16 @@ from typing import Any
 import yaml
 from pydantic import ValidationError
 
-from .models import AssessmentFile, InventoryFile, NistFramework, OrgFile
+from .models import (
+    AssessmentFile,
+    EUAssessmentFile,
+    Findings,
+    GapsFile,
+    InventoryFile,
+    NistFramework,
+    OrgFile,
+    RoadmapFile,
+)
 
 
 class DataError(Exception):
@@ -45,6 +54,22 @@ class Paths:
     @property
     def nist_assessment(self) -> Path:
         return self.root / "data" / "assessments" / "nist_ai_rmf.yaml"
+
+    @property
+    def gaps(self) -> Path:
+        return self.root / "data" / "gaps.yaml"
+
+    @property
+    def roadmap(self) -> Path:
+        return self.root / "data" / "roadmap.yaml"
+
+    @property
+    def eu_assessment(self) -> Path:
+        return self.root / "data" / "assessments" / "eu_ai_act.yaml"
+
+    @property
+    def findings(self) -> Path:
+        return self.root / "data" / "findings.yaml"
 
     @property
     def reports_dir(self) -> Path:
@@ -89,3 +114,28 @@ def load_assessment(paths: Paths) -> AssessmentFile:
 def load_eu_ai_act(paths: Paths) -> dict[str, Any]:
     """The EU AI Act file is reference content; loaded as a raw mapping."""
     return _read_yaml(paths.eu_ai_act)
+
+
+# Phase 3 assessment outputs are optional: assess() renders a skeleton without them.
+def load_gaps(paths: Paths) -> GapsFile | None:
+    if not paths.gaps.exists():
+        return None
+    return _validate(GapsFile, _read_yaml(paths.gaps), paths.gaps)
+
+
+def load_roadmap(paths: Paths) -> RoadmapFile | None:
+    if not paths.roadmap.exists():
+        return None
+    return _validate(RoadmapFile, _read_yaml(paths.roadmap), paths.roadmap)
+
+
+def load_eu_assessment(paths: Paths) -> EUAssessmentFile | None:
+    if not paths.eu_assessment.exists():
+        return None
+    return _validate(EUAssessmentFile, _read_yaml(paths.eu_assessment), paths.eu_assessment)
+
+
+def load_findings(paths: Paths) -> Findings | None:
+    if not paths.findings.exists():
+        return None
+    return _validate(Findings, _read_yaml(paths.findings), paths.findings)

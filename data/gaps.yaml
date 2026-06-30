@@ -1,0 +1,133 @@
+# FakeOrg gap register (SYNTHETIC)
+# Derived from the NIST AI RMF ratings and EU AI Act assessment.
+#   severity: High | Medium | Low
+
+gaps:
+  - id: GAP-01
+    title: No AI governance ownership or committee
+    description: No executive owns AI risk and there is no cross-functional AI governance body.
+    framework: NIST AI RMF
+    mapping: [GOVERN 2.1, GOVERN 2.3]
+    risk: AI decisions are made ad hoc with no accountability; risks go unmanaged across the org.
+    evidence: [draft-ai-acceptable-use-policy.md]
+    severity: High
+  - id: GAP-02
+    title: No approved AI policy
+    description: The acceptable-use policy is an unapproved draft and omits high-risk provisions.
+    framework: NIST AI RMF
+    mapping: [GOVERN 1.2, GOVERN 4.1]
+    risk: Staff lack binding guidance; inconsistent and unsafe AI use.
+    evidence: [draft-ai-acceptable-use-policy.md]
+    severity: High
+  - id: GAP-03
+    title: No AI use-case register or intake process
+    description: No maintained inventory or review gate for new AI tools before adoption.
+    framework: NIST AI RMF
+    mapping: [GOVERN 1.6]
+    risk: Shadow AI proliferates; the org cannot see or govern what it runs.
+    evidence: []
+    severity: Medium
+  - id: GAP-04
+    title: No bias/fairness testing of high-risk resume screening
+    description: The resume-screening tool has no documented bias or adverse-impact testing.
+    framework: NIST AI RMF
+    mapping: [MEASURE 2.11]
+    risk: Potential discriminatory hiring outcomes; legal and reputational exposure.
+    evidence: [vendor-talentsift-datasheet.md]
+    severity: High
+  - id: GAP-05
+    title: No human-oversight design for resume screening
+    description: No SOP defining how recruiters must use, review, or override AI rankings.
+    framework: EU AI Act
+    mapping: [Art 26(2), Art 14, MAP 3.5]
+    risk: Automation bias; the AI effectively makes hiring decisions unchecked.
+    evidence: [vendor-talentsift-datasheet.md]
+    severity: High
+  - id: GAP-06
+    title: Candidates not informed of AI use
+    description: Applicants are not told that AI screening is applied to their applications.
+    framework: EU AI Act
+    mapping: [Art 26(11)]
+    risk: Breach of EU AI Act deployer transparency duty for high-risk systems.
+    evidence: []
+    severity: High
+  - id: GAP-07
+    title: No Fundamental Rights Impact Assessment
+    description: No FRIA performed for the high-risk resume-screening use case.
+    framework: EU AI Act
+    mapping: [Art 27]
+    risk: Non-compliance with a mandatory pre-use obligation; unassessed rights impacts.
+    evidence: []
+    severity: High
+  - id: GAP-08
+    title: Inconsistent AI disclosure on support chatbot
+    description: The chatbot discloses it is AI on the web widget but not in the in-app chat.
+    framework: EU AI Act
+    mapping: [Art 50(1)]
+    risk: Transparency-obligation gap; users may not know they are talking to AI.
+    evidence: [support-chatbot-sop.md]
+    severity: Medium
+  - id: GAP-09
+    title: No AI-specific vendor assessment
+    description: Vendor reviews cover security but not AI risk, bias, or training-data use.
+    framework: NIST AI RMF
+    mapping: [GOVERN 6.1, MANAGE 3.1]
+    risk: Third-party AI risk is unmanaged; unclear whether customer data trains vendor models.
+    evidence: [vendor-risk-assessment-partial.md]
+    severity: Medium
+  - id: GAP-10
+    title: Shadow AI and no data-handling guidance
+    description: Tools (sales/code copilots) adopted without review or data-handling rules.
+    framework: NIST AI RMF
+    mapping: [GOVERN 1.1, MAP 4.1]
+    risk: Confidential data or source code may leak to third-party AI services.
+    evidence: []
+    severity: Medium
+  - id: GAP-11
+    title: No model documentation for in-house forecasting model
+    description: No model card, validation records, or drift monitoring; single-owner key-person risk.
+    framework: NIST AI RMF
+    mapping: [MAP 2.3, MEASURE 2.9, MANAGE 3.2]
+    risk: Undetected model drift; loss of capability if the owner leaves.
+    evidence: []
+    severity: Medium
+  - id: GAP-12
+    title: No AI risk-management process or risk tolerances
+    description: No documented process to identify, assess, and treat AI risks; no risk appetite set.
+    framework: NIST AI RMF
+    mapping: [GOVERN 1.3, GOVERN 1.4, MAP 1.5]
+    risk: Risks are neither prioritized nor treated consistently.
+    evidence: []
+    severity: High
+  - id: GAP-13
+    title: No AI incident response or deactivation capability
+    description: No post-deployment monitoring, kill-switch ownership, or AI-specific incident process.
+    framework: NIST AI RMF
+    mapping: [MANAGE 2.4, MANAGE 4.1]
+    risk: A misbehaving AI system cannot be promptly detected or stopped.
+    evidence: [support-chatbot-sop.md]
+    severity: Medium
+  - id: GAP-14
+    title: No AI risk-management training
+    description: Staff and partners receive no AI risk training.
+    framework: NIST AI RMF
+    mapping: [GOVERN 2.2]
+    risk: Personnel cannot execute governance duties they are unaware of.
+    evidence: []
+    severity: Low
+  - id: GAP-15
+    title: No chatbot output evaluation or log-retention policy
+    description: No evaluation for harmful/incorrect responses; conversation logs kept with no policy.
+    framework: NIST AI RMF
+    mapping: [MEASURE 2.4, MEASURE 3.3]
+    risk: Harmful answers go undetected; privacy/retention exposure on stored chats.
+    evidence: [support-chatbot-sop.md]
+    severity: Low
+  - id: GAP-16
+    title: No user appeal or feedback channel for AI outcomes
+    description: End users cannot report problems or appeal AI-driven outcomes.
+    framework: NIST AI RMF
+    mapping: [MEASURE 3.3]
+    risk: Errors persist; affected people have no recourse.
+    evidence: []
+    severity: Low

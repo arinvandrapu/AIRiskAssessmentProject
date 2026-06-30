@@ -15,9 +15,13 @@ from .loaders import (
     Paths,
     load_assessment,
     load_eu_ai_act,
+    load_eu_assessment,
+    load_findings,
+    load_gaps,
     load_inventory,
     load_nist_framework,
     load_org,
+    load_roadmap,
 )
 from .report import build_context, write_reports
 from .scoring import score_nist
@@ -128,6 +132,11 @@ def assess(root: RootOpt = None) -> None:
                 "Run `airisk init-assessment` first."
             )
         assessment = load_assessment(paths)
+        # Phase 3 assessment outputs — optional; absent → report renders as a skeleton.
+        gaps = load_gaps(paths)
+        roadmap = load_roadmap(paths)
+        findings = load_findings(paths)
+        eu_assessment = load_eu_assessment(paths)
     except DataError as exc:
         _fail(str(exc))
 
@@ -137,7 +146,17 @@ def assess(root: RootOpt = None) -> None:
     chart_title = f"{org.organization.name} — AI Governance Maturity"
     render_maturity_radar(score, chart_path, title=chart_title)
 
-    context = build_context(org, inventory, score, eu_ai_act, CHART_FILENAME)
+    context = build_context(
+        org,
+        inventory,
+        score,
+        eu_ai_act,
+        CHART_FILENAME,
+        gaps=gaps,
+        roadmap=roadmap,
+        findings=findings,
+        eu_assessment=eu_assessment,
+    )
     written = write_reports(paths.reports_dir, context)
 
     overall = score.overall.maturity_pct
