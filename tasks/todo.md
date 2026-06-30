@@ -15,11 +15,12 @@
 - [x] Write this build plan
 - [ ] Get plan sign-off from user before any build
 
-### Phase 1 — Research & data design (own PR; plan + approve first)
-- [ ] Grounded research subagents: exact NIST AI RMF structure (functions/categories/subcategories) + current EU AI Act obligations, risk tiers, timeline
-- [ ] Build framework reference maps under `frameworks/`
-- [ ] Design FakeOrg profile + AI use-case inventory under `data/`
-- [ ] Add synthetic evidence artifacts under `evidence/`
+### Phase 1 — Research & data design (branch `feat/phase1-data`) — IN REVIEW
+- [x] Grounded research subagents: NIST AI RMF structure (72 subcategories) + EU AI Act obligations, risk tiers, timeline
+- [x] Build framework reference maps under `frameworks/` (nist_ai_rmf.yaml, eu_ai_act.yaml)
+- [x] Design FakeOrg profile + AI use-case inventory under `data/`
+- [x] Add synthetic evidence artifacts under `evidence/`
+- [ ] Open Phase 1 PR for review
 
 ### Phase 2 — Scoring engine + report generator (own PR; plan + approve first)
 - [ ] pydantic schemas: organization, inventory, assessment, gaps
