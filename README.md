@@ -7,7 +7,7 @@ and produce a scored report with a gap register and prioritized roadmap — all 
 tested Python tool (`airisk`).
 
 > **NOTE: Synthetic data.** FakeOrg is invented. All organization details, evidence, and findings are
-> fictional. This is a personal project that models what a real assessment looks like — it is not
+> fictional. This is a personal project that models what a real assessment looks like, it is not
 > an assessment of any real company.
 
 ## Skills used & learned
@@ -36,12 +36,12 @@ tested Python tool (`airisk`).
 The key idea: **`airisk` does the paperwork, not the judgment.** A human analyst decides each control
 rating from the evidence; the tool validates the data, computes the maturity math, classifies each
 use case under the EU AI Act, and renders the report and chart. That mirrors how real GRC tooling
-works — and makes the assessment reproducible.
+works, and makes the assessment reproducible.
 
 *Mini-example:* rate `GOVERN 1.1 = Met`, `1.2 = Partial`, `1.3 = Not Met` → weights 1.0 / 0.5 / 0.0
 → 50% maturity for that group → rolled up across categories and functions → drawn on the radar.
 
-## Results at a glance (FakeOrg, synthetic)
+## Results at a glance 
 
 | Metric | Result |
 |---|---|
@@ -126,7 +126,6 @@ interviews, negotiation over findings, and judgment under ambiguity. Read it as 
 
 - Add ISO/IEC 42001 (AI management system) as a second maturity lens.
 - Expand the use-case inventory and evidence base.
-- Export the report to PDF/HTML.
 
 ## License
 
