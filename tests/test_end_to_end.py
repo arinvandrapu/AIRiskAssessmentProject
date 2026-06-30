@@ -35,6 +35,10 @@ def test_full_report_renders_assessment(project_copy: Path) -> None:
     assert "ACT-01" in report  # roadmap rendered
     assert "Key findings" in report  # executive summary
     assert "Art 27" in report  # EU AI Act obligation table
+    assert "scoring methodology" in report.lower()  # §3 methodology section
+    assert "Detailed findings" in report  # deep-dive findings
+    assert "Regulatory hook" in report  # detailed-finding structure
+    assert "Why High" in report  # per-gap severity rationale
 
 
 def test_skeleton_report_without_phase3_data(tmp_path: Path) -> None:

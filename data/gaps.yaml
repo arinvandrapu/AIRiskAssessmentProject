@@ -1,6 +1,11 @@
 # FakeOrg gap register (SYNTHETIC)
 # Derived from the NIST AI RMF ratings and EU AI Act assessment.
-#   severity: High | Medium | Low
+#
+# Severity = function of IMPACT (harm to individuals / legal exposure / breadth) and
+# LIKELIHOOD (a Not Met control is more likely to let the risk materialize than a Partial one).
+#   High   = high-risk-system safeguard missing, direct legal exposure, OR systemic/org-wide gap
+#   Medium = meaningful compliance/operational risk, narrower scope or lower likelihood
+#   Low    = good-practice gap with limited immediate impact
 
 gaps:
   - id: GAP-01
@@ -11,6 +16,7 @@ gaps:
     risk: AI decisions are made ad hoc with no accountability; risks go unmanaged across the org.
     evidence: [draft-ai-acceptable-use-policy.md]
     severity: High
+    severity_rationale: Systemic root cause — without an owner, no other gap reliably gets fixed; org-wide impact, near-certain to persist.
   - id: GAP-02
     title: No approved AI policy
     description: The acceptable-use policy is an unapproved draft and omits high-risk provisions.
@@ -19,6 +25,7 @@ gaps:
     risk: Staff lack binding guidance; inconsistent and unsafe AI use.
     evidence: [draft-ai-acceptable-use-policy.md]
     severity: High
+    severity_rationale: Foundational control absent; affects every employee's AI use, high likelihood of inconsistent/unsafe practice.
   - id: GAP-03
     title: No AI use-case register or intake process
     description: No maintained inventory or review gate for new AI tools before adoption.
@@ -27,6 +34,7 @@ gaps:
     risk: Shadow AI proliferates; the org cannot see or govern what it runs.
     evidence: []
     severity: Medium
+    severity_rationale: Process control, not a direct individual harm; enables other risks but impact is indirect.
   - id: GAP-04
     title: No bias/fairness testing of high-risk resume screening
     description: The resume-screening tool has no documented bias or adverse-impact testing.
@@ -35,6 +43,7 @@ gaps:
     risk: Potential discriminatory hiring outcomes; legal and reputational exposure.
     evidence: [vendor-talentsift-datasheet.md]
     severity: High
+    severity_rationale: High-risk system; missing safeguard can directly harm candidates (discrimination) with clear legal exposure.
   - id: GAP-05
     title: No human-oversight design for resume screening
     description: No SOP defining how recruiters must use, review, or override AI rankings.
@@ -43,6 +52,7 @@ gaps:
     risk: Automation bias; the AI effectively makes hiring decisions unchecked.
     evidence: [vendor-talentsift-datasheet.md]
     severity: High
+    severity_rationale: High-risk system effectively deciding unchecked; EU Art 26(2) deployer duty; affects candidates directly.
   - id: GAP-06
     title: Candidates not informed of AI use
     description: Applicants are not told that AI screening is applied to their applications.
@@ -51,6 +61,7 @@ gaps:
     risk: Breach of EU AI Act deployer transparency duty for high-risk systems.
     evidence: []
     severity: High
+    severity_rationale: Direct breach of an in-force transparency duty for a high-risk system; affects every applicant.
   - id: GAP-07
     title: No DPIA or fundamental-rights review for the high-risk screening tool
     description: >
@@ -62,6 +73,7 @@ gaps:
       unassessed. (Note: an EU AI Act Art 27 FRIA is NOT triggered for a private Annex III.4 deployer.)
     evidence: []
     severity: High
+    severity_rationale: GDPR Art 35 DPIA is legally mandatory for this profiling; non-compliance plus unassessed rights impacts on candidates.
   - id: GAP-08
     title: Inconsistent AI disclosure on support chatbot
     description: The chatbot discloses it is AI on the web widget but not in the in-app chat.
@@ -70,6 +82,7 @@ gaps:
     risk: Transparency-obligation gap; users may not know they are talking to AI.
     evidence: [support-chatbot-sop.md]
     severity: Medium
+    severity_rationale: Real transparency gap but limited harm — users still reach human agents; partial coverage already exists.
   - id: GAP-09
     title: No AI-specific vendor assessment
     description: Vendor reviews cover security but not AI risk, bias, or training-data use.
@@ -78,6 +91,7 @@ gaps:
     risk: Third-party AI risk is unmanaged; unclear whether customer data trains vendor models.
     evidence: [vendor-risk-assessment-partial.md]
     severity: Medium
+    severity_rationale: Latent third-party risk across several tools; impact data-dependent, likelihood moderate.
   - id: GAP-10
     title: Shadow AI and no data-handling guidance
     description: Tools (sales/code copilots) adopted without review or data-handling rules.
@@ -86,6 +100,7 @@ gaps:
     risk: Confidential data or source code may leak to third-party AI services.
     evidence: []
     severity: Medium
+    severity_rationale: Plausible data/IP leakage; impact significant but likelihood and exposure depend on user behaviour.
   - id: GAP-11
     title: No model documentation for in-house forecasting model
     description: No model card, validation records, or drift monitoring; single-owner key-person risk.
@@ -94,6 +109,7 @@ gaps:
     risk: Undetected model drift; loss of capability if the owner leaves.
     evidence: []
     severity: Medium
+    severity_rationale: Operational/internal impact only (no external individuals); drift and key-person risk are real but contained.
   - id: GAP-12
     title: No AI risk-management process or risk tolerances
     description: No documented process to identify, assess, and treat AI risks; no risk appetite set.
@@ -102,6 +118,7 @@ gaps:
     risk: Risks are neither prioritized nor treated consistently.
     evidence: []
     severity: High
+    severity_rationale: Systemic — with no process or tolerances nothing is prioritized or treated; underpins most other gaps.
   - id: GAP-13
     title: No AI incident response or deactivation capability
     description: No post-deployment monitoring, kill-switch ownership, or AI-specific incident process.
@@ -110,6 +127,7 @@ gaps:
     risk: A misbehaving AI system cannot be promptly detected or stopped.
     evidence: [support-chatbot-sop.md]
     severity: Medium
+    severity_rationale: High impact if triggered, but lower likelihood; a general incident process gives partial fallback.
   - id: GAP-14
     title: No AI risk-management training
     description: Staff and partners receive no AI risk training.
@@ -118,6 +136,7 @@ gaps:
     risk: Personnel cannot execute governance duties they are unaware of.
     evidence: []
     severity: Low
+    severity_rationale: Enabling weakness rather than a direct harm; impact realized only via other gaps.
   - id: GAP-15
     title: No chatbot output evaluation or log-retention policy
     description: No evaluation for harmful/incorrect responses; conversation logs kept with no policy.
@@ -126,6 +145,7 @@ gaps:
     risk: Harmful answers go undetected; privacy/retention exposure on stored chats.
     evidence: [support-chatbot-sop.md]
     severity: Low
+    severity_rationale: Limited immediate harm; privacy exposure is latent and bounded to support interactions.
   - id: GAP-16
     title: No user appeal, feedback, or explanation channel for AI outcomes
     description: End users cannot report problems, appeal AI-driven outcomes, or obtain an explanation.
@@ -134,3 +154,4 @@ gaps:
     risk: Errors persist; affected people have no recourse or right to explanation (EU AI Act Art 86).
     evidence: []
     severity: Low
+    severity_rationale: Real but lower near-term impact; the Art 86 right to explanation applies from Aug 2026, giving lead time.
