@@ -1,9 +1,5 @@
 # AI Governance Risk Assessment — FakeOrg
 
-> **⚠️ Synthetic data.** FakeOrg is a fictional organization invented for a portfolio
-> project. All people, tools, evidence, and findings are made up. Nothing here is a real
-> assessment of a real company.
-
 **Engagement:** AI Governance Risk Assessment · **Period:** Q2 2026 · **Depth:** Governance-level (control & process maturity; not a technical model audit)
 
 **Frameworks:** NIST AI RMF 1.0 (maturity scoring), EU AI Act (risk classification + obligations)
