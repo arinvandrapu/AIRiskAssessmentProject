@@ -22,10 +22,4 @@ Applies to all employees and contractors using AI tools on FakeOrg systems or da
 - Sharing confidential FakeOrg information with unapproved external services.
 
 ---
-### Open items (tracked by author — not yet addressed)
-- [ ] Define an approved-tools list (currently none maintained).
-- [ ] Add provisions for high-risk / regulated AI uses (e.g., recruitment screening).
-- [ ] Require bias / fairness testing for AI that affects individuals.
-- [ ] Reference the EU AI Act obligations applicable to FakeOrg.
-- [ ] Mandate a central AI use-case register and intake/review process.
-- [ ] Assign executive ownership and a review cadence.
+
