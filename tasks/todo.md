@@ -10,24 +10,35 @@
 
 ---
 
-### Phase 0 — Foundations & plan (branch: `feat/foundations-spec`) — THIS PR
+### Phase 0 — Foundations & plan — DONE (merged)
 - [x] Record locked decisions in vault (ADR-001..007), rename org → FakeOrg
-- [x] Write this build plan
-- [ ] Get plan sign-off from user before any build
+- [x] Write the build plan
+- [x] Plan sign-off from user
 
-### Phase 1 — Research & data design (branch `feat/phase1-data`) — IN REVIEW
+### Phase 1 — Research & data design — DONE (PR #5 merged)
 - [x] Grounded research subagents: NIST AI RMF structure (72 subcategories) + EU AI Act obligations, risk tiers, timeline
 - [x] Build framework reference maps under `frameworks/` (nist_ai_rmf.yaml, eu_ai_act.yaml)
 - [x] Design FakeOrg profile + AI use-case inventory under `data/`
 - [x] Add synthetic evidence artifacts under `evidence/`
-- [ ] Open Phase 1 PR for review
+- [x] Open + merge Phase 1 PR
 
-### Phase 2 — Scoring engine + report generator (own PR; plan + approve first)
-- [ ] pydantic schemas: organization, inventory, assessment, gaps
-- [ ] scoring engine: Met(1.0)/Partial(0.5)/Not Met(0)/NA(excluded) → maturity % per NIST function
-- [ ] Jinja2 report renderer + maturity chart (matplotlib/SVG)
-- [ ] Typer CLI: `airisk assess`
-- [ ] pytest tests + ruff clean
+### Phase 2 — Scoring engine + report generator (branch `feat/phase2-engine`) — PLAN AWAITING APPROVAL
+Build the `airisk` Python CLI that ingests Phase 1 data and generates the report.
+End state: pipeline runs end-to-end, rendering a report skeleton (controls present, unrated);
+honest ratings come in Phase 3.
+
+Package layout: `src/airisk/{models,loaders,scoring,report,chart,cli}.py` + `templates/` + `tests/` + `pyproject.toml`.
+
+- [ ] `models.py` — pydantic v2 schemas (organization, inventory, framework catalog, assessment ratings, gaps)
+- [ ] `loaders.py` — load + schema-validate YAML from `data/` and `frameworks/`
+- [ ] `scoring.py` — Met(1.0)/Partial(0.5)/Not Met(0)/NA(excluded) → maturity % rolled up subcategory → category → function; EU AI Act tier/obligation helpers
+- [ ] `report.py` + `templates/` — Jinja2 render to `reports/scorecard.md` + `reports/final-report.md`
+- [ ] `chart.py` — matplotlib radar chart of maturity-by-function → `reports/maturity-chart.png`
+- [ ] `cli.py` — Typer commands: `airisk validate`, `airisk init-assessment`, `airisk assess`
+- [ ] `init-assessment` generates blank `data/assessments/nist_ai_rmf.yaml` (72 subcats, status null) for Phase 3
+- [ ] pytest tests (schema, scoring math, NA handling, end-to-end render) + ruff clean
+- [ ] `pyproject.toml` with `airisk` entry point; `pip install -e .` works
+- [ ] Open Phase 2 PR; signal explicitly when complete + ready to merge
 
 ### Phase 3 — The assessment content (own PR; plan + approve first)
 - [ ] Score NIST AI RMF subcategories honestly, with synthetic evidence
