@@ -57,7 +57,7 @@ works, and makes the assessment reproducible.
 **high-risk** under the EU AI Act (Annex III, employment) — runs with no bias/fairness testing, no
 defined human-oversight procedure, and no candidate notification.
 
-📄 **Read the full assessment:** [`reports/final-report.md`](reports/final-report.md) ·
+**Read the full assessment:** [`reports/final-report.md`](reports/final-report.md) ·
 [`reports/scorecard.md`](reports/scorecard.md)
 
 ## How it works
