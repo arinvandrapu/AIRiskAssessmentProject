@@ -6,7 +6,7 @@ use, assess governance maturity against the **NIST AI RMF**, review it against t
 and produce a scored report with a gap register and prioritized roadmap — all driven by a small,
 tested Python tool (`airisk`).
 
-> **Synthetic data.** FakeOrg is invented. All organization details, evidence, and findings are
+> **NOTE: Synthetic data.** FakeOrg is invented. All organization details, evidence, and findings are
 > fictional. This is a personal project that models what a real assessment looks like — it is not
 > an assessment of any real company.
 
