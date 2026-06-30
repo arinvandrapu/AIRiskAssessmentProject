@@ -34,7 +34,6 @@ FakeOrg has adopted AI quickly and from the bottom up, but governance has not ke
   - Technical red-teaming / model security testing
   - Sub-processors' internal AI systems
   - Pure analytics/BI with no ML component
-- **Stakeholders consulted:** Risk & Compliance (Head of Compliance); IT (Director of IT); Security (CISO); Business owners (VP Sales, VP Engineering, CMO, Head of Talent, Director of Support, CFO)
 - **Evidence collected:** Draft AI acceptable-use policy; Vendor data sheets / DPAs; Support chatbot standard operating procedure; Partial vendor risk assessment; Security & data-protection policy excerpts
 
 ## 3. How to read this report (scoring methodology)
