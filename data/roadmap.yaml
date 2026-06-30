@@ -52,11 +52,11 @@ actions:
     addresses: [GAP-06, GAP-08]
     priority: High
   - id: ACT-07
-    action: Conduct a Fundamental Rights Impact Assessment for the high-risk use case.
-    owner: Head of Compliance
+    action: Complete a GDPR Art 35 DPIA for the resume-screening tool (plus a voluntary fundamental-rights review).
+    owner: Head of Compliance / DPO
     target: 2026-Q4
-    resources: FRIA template; stakeholder workshops.
-    success_measure: Completed FRIA filed; mitigations assigned and tracked.
+    resources: DPIA template; stakeholder workshops.
+    success_measure: DPIA completed and filed; mitigations assigned and tracked.
     addresses: [GAP-07]
     priority: High
   - id: ACT-08
@@ -80,6 +80,6 @@ actions:
     owner: CISO and Director of Support
     target: 2027-Q1
     resources: Runbook; monitoring tooling; user-facing feedback path.
-    success_measure: AI incident runbook tested; appeal channel live; monitoring in place.
+    success_measure: AI incident runbook tested; appeal + explanation channel live (Art 86); monitoring in place.
     addresses: [GAP-13, GAP-15, GAP-16]
     priority: Medium

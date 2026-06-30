@@ -2,8 +2,8 @@
 
 > **Synthetic data.** {{ org.name }} is a fictional organization; this scorecard is a portfolio artifact.
 
-**Framework:** NIST AI RMF 1.0 · **Overall maturity:** {{ score.overall.maturity_pct | pct }}
-**Coverage:** {{ score.overall.assessed }}/{{ score.overall.total }} subcategories assessed
+**Framework:** NIST AI RMF 1.0 · **Overall maturity:** {{ score.overall.maturity_pct | pct }} (over {{ score.overall.applicable }} applicable subcategories)
+**Coverage:** {{ score.overall.assessed }}/{{ score.overall.total }} assessed ({{ score.overall.assessed - score.overall.applicable }} N/A)
 {% if chart_filename %}
 ![Maturity by function]({{ chart_filename }})
 {% endif %}

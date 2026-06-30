@@ -18,5 +18,6 @@ Durable notes for the AI Risk Assessment Project. Conventions live in the worksp
 - [[phase3-assessment]] — built assessment: 11.4% maturity, 16 gaps, 10-action roadmap
 - [[messaging-and-framing]] — approved plain-English framing to reuse in README + report
 - [[phase4-plan]] — plan for showcase polish (README) + report review
+- [[phase4-showcase]] — Phase 4 progress: README, LICENSE, consistency checks, review in flight
 
 _Add a line here as notes are created._

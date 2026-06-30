@@ -36,7 +36,7 @@ assessment:
   assessor_role: GRC analyst (simulated)
   period: Q2 2026
   depth: Governance-level (control & process maturity; not a technical model audit)
-  ai_use_reviewed: both        # internal + customer-facing
+  ai_use_reviewed: internal and customer-facing
   in_scope:
     - All AI/ML tools and use cases across business units (internal & customer-facing)
     - Governance, policy, risk, data, vendor, and human-oversight controls

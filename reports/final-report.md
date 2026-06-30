@@ -14,22 +14,22 @@
 
 FakeOrg is a B2B SaaS — project & work-management platform organization (~520 employees) with an AI governance posture rated **emerging**.
 
-FakeOrg has adopted AI quickly and from the bottom up, but governance has not kept pace. There is no executive owner for AI risk, no approved AI policy, and — until this engagement — no inventory of where AI is used. Maturity against the NIST AI RMF is low overall, weakest in the MEASURE function, where there is essentially no testing, monitoring, or bias evaluation. The most urgent exposure is the AI resume-screening tool: it is high-risk under the EU AI Act (Annex III employment) yet operates with no bias testing, no human-oversight procedure, no candidate notification, and no Fundamental Rights Impact Assessment. The good news is that FakeOrg's existing security and privacy programs provide partial coverage to build on, and the improvement roadmap below sequences the highest-severity fixes first.
+FakeOrg has adopted AI quickly and from the bottom up, but governance has not kept pace. There is no executive owner for AI risk, no approved AI policy, and — until this engagement — no inventory of where AI is used. Maturity against the NIST AI RMF is low overall, weakest in the MEASURE function, where there is essentially no testing, monitoring, or bias evaluation. The most urgent exposure is the AI resume-screening tool: it is high-risk under the EU AI Act (Annex III employment) yet operates with no bias testing, no human-oversight procedure, no candidate notification, and no data-protection impact assessment (DPIA). The good news is that FakeOrg's existing security and privacy programs provide partial coverage to build on, and the improvement roadmap below sequences the highest-severity fixes first.
 
 
-**Overall NIST AI RMF maturity:** 11.4% across 72/72 assessed subcategories; **16 gaps identified** (7 High, 6 Medium, 3 Low).
+**Overall NIST AI RMF maturity:** 11.4% over 70 applicable subcategories (72 assessed; 2 N/A excluded); **16 gaps identified** (7 High, 6 Medium, 3 Low).
 
 **Key findings**
 - No executive ownership or committee for AI risk; governance is ad hoc.
 - The AI acceptable-use policy is an unapproved draft with no high-risk provisions.
 - The high-risk resume-screening tool lacks bias testing, human oversight, and candidate notice.
-- No Fundamental Rights Impact Assessment exists for the high-risk use case (EU AI Act Art 27).
+- No GDPR Art 35 DPIA for the high-risk screening tool (mandatory for systematic candidate profiling).
 - MEASURE is the weakest function — no AI testing, monitoring, or metrics across the board.
 - Existing vendor-security and GDPR programs give a foundation to extend to AI-specific risk.
 
 ## 2. Scope & methodology
 
-- **AI use reviewed:** both
+- **AI use reviewed:** internal and customer-facing
 - **In scope:**
   - All AI/ML tools and use cases across business units (internal & customer-facing)
   - Governance, policy, risk, data, vendor, and human-oversight controls
@@ -54,7 +54,7 @@ FakeOrg has adopted AI quickly and from the bottom up, but governance has not ke
 
 ## 4. NIST AI RMF maturity findings
 
-**Overall:** 11.4% (72/72 assessed)
+**Overall:** 11.4% over 70 applicable subcategories (72 assessed, 2 N/A)
 
 ![Maturity by function](maturity-chart.png)
 
@@ -77,7 +77,7 @@ Risk-tier distribution across the AI inventory:
 
 ### UC-01 — AI resume screening · high-risk
 
-_Annex III.4 (employment/recruitment); performs profiling, so always high-risk (Art 6(4))._
+_Annex III.4 (employment/recruitment); performs profiling, so always high-risk (Art 6(3), final subparagraph)._
 
 | Obligation | Status | Note |
 |---|---|---|
@@ -86,12 +86,14 @@ _Annex III.4 (employment/recruitment); performs profiling, so always high-risk (
 | Art 26(5) — Monitor operation; report serious incidents | Not Met | No monitoring of outcomes or incident-reporting path. |
 | Art 26(6) — Keep logs for at least 6 months (where under deployer control) | Partial | Vendor retains logs; FakeOrg has no defined retention/access control. |
 | Art 26(11) — Inform affected persons subject to Annex III decisions | Not Met | Candidates are not told AI screening is used. |
-| Art 27 — Fundamental Rights Impact Assessment (FRIA) | Not Met | No FRIA performed for the high-risk use case. |
+| Art 27 (FRIA) — Fundamental Rights Impact Assessment — applicability | Not Applicable | Not triggered: Art 27 binds public bodies, public-service providers, and Annex III 5(b)/(c) deployers; a private employer under Annex III.4 is out of scope. The binding instrument here is a GDPR Art 35 DPIA (systematic candidate profiling); a voluntary FRIA-style review is recommended good practice (see GAP-07).
+ |
 | Art 86 — Provide affected persons a meaningful explanation | Not Met | No mechanism for candidates to obtain an explanation. |
 
 ### UC-02 — Customer support chatbot · limited-risk
 
-_Article 50(1) transparency — users must be told they interact with an AI._
+_Article 50(1) transparency — users must be told they interact with an AI. FakeOrg assembles the chatbot (helpdesk platform + third-party LLM) and exposes it under its own brand, so it acts as the provider/operator on whom the Art 50(1) disclosure duty falls.
+_
 
 | Obligation | Status | Note |
 |---|---|---|
@@ -108,9 +110,10 @@ _Article 50(1) transparency — users must be told they interact with an AI._
 | GAP-02 | High | No approved AI policy | GOVERN 1.2, GOVERN 4.1 | Staff lack binding guidance; inconsistent and unsafe AI use. |
 | GAP-03 | Medium | No AI use-case register or intake process | GOVERN 1.6 | Shadow AI proliferates; the org cannot see or govern what it runs. |
 | GAP-04 | High | No bias/fairness testing of high-risk resume screening | MEASURE 2.11 | Potential discriminatory hiring outcomes; legal and reputational exposure. |
-| GAP-05 | High | No human-oversight design for resume screening | Art 26(2), Art 14, MAP 3.5 | Automation bias; the AI effectively makes hiring decisions unchecked. |
+| GAP-05 | High | No human-oversight design for resume screening | Art 26(2), MAP 3.5 | Automation bias; the AI effectively makes hiring decisions unchecked. |
 | GAP-06 | High | Candidates not informed of AI use | Art 26(11) | Breach of EU AI Act deployer transparency duty for high-risk systems. |
-| GAP-07 | High | No Fundamental Rights Impact Assessment | Art 27 | Non-compliance with a mandatory pre-use obligation; unassessed rights impacts. |
+| GAP-07 | High | No DPIA or fundamental-rights review for the high-risk screening tool | GDPR Art 35, MEASURE 2.10 | A GDPR Art 35 DPIA is mandatory for systematic candidate profiling, and rights impacts are unassessed. (Note: an EU AI Act Art 27 FRIA is NOT triggered for a private Annex III.4 deployer.)
+ |
 | GAP-08 | Medium | Inconsistent AI disclosure on support chatbot | Art 50(1) | Transparency-obligation gap; users may not know they are talking to AI. |
 | GAP-09 | Medium | No AI-specific vendor assessment | GOVERN 6.1, MANAGE 3.1 | Third-party AI risk is unmanaged; unclear whether customer data trains vendor models. |
 | GAP-10 | Medium | Shadow AI and no data-handling guidance | GOVERN 1.1, MAP 4.1 | Confidential data or source code may leak to third-party AI services. |
@@ -118,8 +121,8 @@ _Article 50(1) transparency — users must be told they interact with an AI._
 | GAP-12 | High | No AI risk-management process or risk tolerances | GOVERN 1.3, GOVERN 1.4, MAP 1.5 | Risks are neither prioritized nor treated consistently. |
 | GAP-13 | Medium | No AI incident response or deactivation capability | MANAGE 2.4, MANAGE 4.1 | A misbehaving AI system cannot be promptly detected or stopped. |
 | GAP-14 | Low | No AI risk-management training | GOVERN 2.2 | Personnel cannot execute governance duties they are unaware of. |
-| GAP-15 | Low | No chatbot output evaluation or log-retention policy | MEASURE 2.4, MEASURE 3.3 | Harmful answers go undetected; privacy/retention exposure on stored chats. |
-| GAP-16 | Low | No user appeal or feedback channel for AI outcomes | MEASURE 3.3 | Errors persist; affected people have no recourse. |
+| GAP-15 | Low | No chatbot output evaluation or log-retention policy | MEASURE 2.4 | Harmful answers go undetected; privacy/retention exposure on stored chats. |
+| GAP-16 | Low | No user appeal, feedback, or explanation channel for AI outcomes | MEASURE 3.3, Art 86 | Errors persist; affected people have no recourse or right to explanation (EU AI Act Art 86). |
 
 ## 7. Governance improvement plan
 
@@ -131,7 +134,7 @@ _Article 50(1) transparency — users must be told they interact with an AI._
 | ACT-04 | High | Commission a bias/adverse-impact audit of the resume-screening tool. | Head of Talent (with vendor) | 2026-Q3 | Documented bias audit with remediation actions tracked. |
 | ACT-05 | High | Define and implement a human-oversight SOP for resume screening. | Head of Talent | 2026-Q4 | Documented SOP; recruiters trained; override/review rate monitored. |
 | ACT-06 | High | Add AI transparency notices — inform candidates; fix chatbot disclosure everywhere. | Head of Talent and Director of Support | 2026-Q3 | Candidate notice live; AI disclosure shown in all chatbot surfaces. |
-| ACT-07 | High | Conduct a Fundamental Rights Impact Assessment for the high-risk use case. | Head of Compliance | 2026-Q4 | Completed FRIA filed; mitigations assigned and tracked. |
+| ACT-07 | High | Complete a GDPR Art 35 DPIA for the resume-screening tool (plus a voluntary fundamental-rights review). | Head of Compliance / DPO | 2026-Q4 | DPIA completed and filed; mitigations assigned and tracked. |
 | ACT-08 | Medium | Extend vendor risk assessment with an AI module (bias, training-data use, model docs). | Security & IT | 2026-Q4 | All AI vendors re-assessed with the AI module; gaps logged. |
 | ACT-09 | Medium | Roll out an AI risk-management process, risk tolerances, and staff training. | Head of Compliance | 2027-Q1 | Documented process in use; risk tolerances approved; >90% trained. |
-| ACT-10 | Medium | Define AI incident response, post-deployment monitoring, deactivation, and appeal channels. | CISO and Director of Support | 2027-Q1 | AI incident runbook tested; appeal channel live; monitoring in place. |
+| ACT-10 | Medium | Define AI incident response, post-deployment monitoring, deactivation, and appeal channels. | CISO and Director of Support | 2027-Q1 | AI incident runbook tested; appeal + explanation channel live (Art 86); monitoring in place. |

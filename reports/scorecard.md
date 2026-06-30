@@ -2,8 +2,8 @@
 
 > **Synthetic data.** FakeOrg is a fictional organization; this scorecard is a portfolio artifact.
 
-**Framework:** NIST AI RMF 1.0 · **Overall maturity:** 11.4%
-**Coverage:** 72/72 subcategories assessed
+**Framework:** NIST AI RMF 1.0 · **Overall maturity:** 11.4% (over 70 applicable subcategories)
+**Coverage:** 72/72 assessed (2 N/A)
 ![Maturity by function](maturity-chart.png)
 
 ## Maturity by function
