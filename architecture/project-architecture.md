@@ -45,9 +45,8 @@ Core principle: **the assessment content lives as data, and one command regenera
 
 ## 3. The final deliverable on the repo
 
-A public repo that reads as a complete, credible engagement:
 
-| What a reviewer sees | Purpose |
+|  |  |
 |---|---|
 | **README** (landing page) | The pitch — what it is, prominent synthetic-data disclaimer, skills/tools used, how to run it, screenshots, link to the report |
 | **`reports/final-report.md`** | Headline artifact — exec summary, scope/methodology, AI inventory, NIST maturity findings, EU AI Act review, gap register, improvement roadmap |
